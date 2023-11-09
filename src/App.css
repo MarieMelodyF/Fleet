@@ -1,0 +1,127 @@
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+/* ------------ */
+/* ---HEADER--- */
+/* ------------ */
+.head img {
+  height: 30px;
+}
+
+.head {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(69, 122, 124);
+  border-bottom: 1px solid lightgray;
+}
+
+/* ------------ */
+/* ---MOVIES--- */
+/* ------------ */
+
+.side_menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  border: 1px solid red;
+  margin-left: 1rem;
+  padding-top: 2rem;
+}
+
+.list img {
+  height: 150px;
+  /* width: 200px; */
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.movie_details {
+  padding-top: 2rem;
+  border: 1px solid blue;
+  flex: 1;
+}
+.movie_details_none {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  border: 1px solid blue;
+  flex: 1;
+  font-size: 20px;
+}
+.movie_details_none p {
+  margin-top: 2rem;
+}
+.bcg {
+  opacity: 0.6;
+  height: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+.text_none {
+  position: absolute;
+  top: 300px;
+  z-index: 2;
+  font-weight: bold;
+  color: rgb(238, 253, 253);
+  background-color: rgba(46, 44, 44, 0.513);
+  /* opacity: 0.8; */
+}
+.container {
+  display: flex;
+  background-color: rgb(69, 122, 124);
+  border: 1px solid rgb(23, 18, 18);
+  gap: 1rem;
+}
+.container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(23, 18, 18);
+}
+.movie_details img {
+  /* height: 450px; */
+  width: 400px;
+  object-fit: cover;
+}
+
+.card-prod img {
+  width: 100px;
+}
+
+.card-prod {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid red;
+}
+
+.carroussel {
+  display: flex;
+  overflow: scroll hidden;
+  width: 1200px;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.carroussel img {
+  border: 1px solid red;
+  height: 230px;
+  width: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
