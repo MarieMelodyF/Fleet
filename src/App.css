@@ -1,8 +1,23 @@
+body {
+  background-color: rgb(69, 122, 124);
+}
+
 h1 {
   font-size: 30px;
   text-align: center;
 }
-
+h2 {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 25px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+h4 {
+  text-align: center;
+}
 /* ------------ */
 /* ---HEADER--- */
 /* ------------ */
@@ -28,15 +43,14 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 320px;
   border: 1px solid red;
-  margin-left: 1rem;
-  padding-top: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+  width: 200px;
 }
 
 .list img {
-  height: 150px;
-  /* width: 200px; */
+  height: 250px;
   object-fit: contain;
   border-radius: 6px;
   margin-bottom: 1rem;
@@ -48,10 +62,14 @@ h1 {
   flex-wrap: wrap;
   align-items: center;
 }
+
+/* -------------------- */
+/* ---MOVIES DETAILS--- */
+/* -------------------- */
 .movie_details {
-  padding-top: 2rem;
+  padding: 2rem;
   border: 1px solid blue;
-  flex: 1;
+  /* flex: 1; */
 }
 .movie_details_none {
   display: flex;
@@ -83,15 +101,24 @@ h1 {
 }
 .container {
   display: flex;
-  background-color: rgb(69, 122, 124);
+  justify-content: center;
+  border: 1px solid rgb(23, 18, 18);
+  gap: 1rem;
+  margin: 1rem;
+}
+.container_bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid rgb(23, 18, 18);
   gap: 1rem;
 }
 .container-right {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   border: 1px solid rgb(23, 18, 18);
+  /* background-color: aliceblue; */
 }
 .movie_details img {
   /* height: 450px; */
@@ -99,29 +126,147 @@ h1 {
   object-fit: cover;
 }
 
-.card-prod img {
-  width: 100px;
-}
-
-.card-prod {
+.left {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  border: 1px solid red;
+  /* background-color: antiquewhite; */
+}
+.right {
+  margin: 0 2rem;
+  padding: 2rem;
+  flex: 1;
+  /* background-color: antiquewhite; */
+}
+.right_1 {
+  display: flex;
+  justify-content: space-between;
+  line-height: 25px;
 }
 
+.prod img {
+  width: 70px;
+  display: flex;
+  margin: 3px;
+}
+.prod_flex {
+  display: flex;
+}
+.right_2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  line-height: 25px;
+  width: auto;
+  text-align: justify;
+  /* background-color: antiquewhite; */
+}
+.percent {
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+}
+
+.trailer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .carroussel {
   display: flex;
+  /* flex-direction: column; */
   overflow: scroll hidden;
-  width: 1200px;
+  width: 1150px;
   margin-top: 2rem;
   gap: 1rem;
 }
 
+.carroussel::-webkit-scrollbar {
+  display: none;
+}
+
+.similar {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .carroussel img {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 230px;
   width: auto;
   border-radius: 10px;
   object-fit: contain;
+}
+.all_reviews {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid aliceblue; */
+  overflow: hidden scroll;
+  height: 500px;
+  width: 925px;
+  align-items: center;
+}
+
+.all_reviews::-webkit-scrollbar {
+  width: 12px;
+}
+
+.all_reviews::-webkit-scrollbar-track {
+  background: rgb(69, 122, 124);
+}
+
+.all_reviews::-webkit-scrollbar-thumb {
+  background-color: rgb(93, 160, 162);
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(29, 77, 79);
+}
+.review img {
+  height: 40px;
+  width: 40px;
+  border-radius: 70%;
+  margin-bottom: 1rem;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  width: 900px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(4, 67, 67);
+  color: white;
+  line-height: 20px;
+}
+.review p {
+  padding-bottom: 1rem;
+}
+.user {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.actor {
+  background-color: rgb(54, 168, 168);
+  border-radius: 10px;
+  text-align: center;
+  height: 20px;
+}
+
+.actors img {
+  height: 200px;
+  border-radius: 10px 10px 0 0;
+}
+.actors {
+  background-color: rgb(54, 168, 168);
+  border-radius: 10px;
 }

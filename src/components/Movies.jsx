@@ -11,7 +11,7 @@ const Movies = () => {
   const [search, setSearch] = useState("");
   const [movieSelected, setMovieSelected] = useState();
   const [movieId, setMovieId] = useState();
-  //   console.log("selected", movieSelected);
+  console.log("selected", movieSelected);
   //   console.log("similar", similareMovies);
   console.log(search);
 
