@@ -21,7 +21,6 @@ const DetailsMovies = ({ movieSelected }) => {
         let three = `https://api.themoviedb.org/3/movie/${movieSelected.id}/reviews?language=frS&page=1&api_key=${API_KEY}`;
         let four = `https://api.themoviedb.org/3/movie/${movieSelected.id}/credits?language=frS&api_key=${API_KEY}`;
 
-        // Use axios.get and await for the responses
         const responseOne = await axios.get(one, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -141,7 +140,6 @@ const DetailsMovies = ({ movieSelected }) => {
             {actors.cast ? (
               <>
                 {actors.cast.slice(0, 10).map((actor, index) => {
-                  console.log("===>", actor);
                   return (
                     <div className="actors" key={index}>
                       {actor.profile_path === null ? (
