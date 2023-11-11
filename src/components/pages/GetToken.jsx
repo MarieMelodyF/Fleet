@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 // import { useLocation } from "react-router-dom";
 
-const GetToken = () => {
+const GetToken = ({ loggedInUserId }) => {
+  // console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
   const [userToken, setUserToken] = useState();
   // console.log("gettoken", userToken);
   // const location = useLocation();
@@ -16,6 +17,7 @@ const GetToken = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // CREATE REQUEST TOKEN //
         let one = ` https://api.themoviedb.org/3/authentication/token/new?api_key=${API_KEY}`;
         const responseOne = await axios.get(one, {
           headers: { Authorization: `Bearer ${token}` },
@@ -42,16 +44,18 @@ const GetToken = () => {
 
   return (
     <div>
-      <Link
-        to={`https://www.themoviedb.org/authenticate/${userToken}?redirect_to=http://localhost:5173/signup/approved`}
-        // to={{
-        //   pathname: `/signup/approved`,
-        //   search: `?userToken=${userToken}?redirect_to=http://localhost:5173/signup/approved`,
-        //   state: { userToken: userToken },
-        // }}
-      >
-        <button>Inscrit toi</button>
-      </Link>
+      {/* Ask the user for permission for request token */}
+
+      {loggedInUserId ? (
+        <p>Bienvenue</p>
+      ) : (
+        <Link
+          to={`https://www.themoviedb.org/authenticate/${userToken}?redirect_to=http://localhost:5173/signup/approved`}
+        >
+          {" "}
+          <p>Inscrit toi</p>{" "}
+        </Link>
+      )}
     </div>
   );
 };
