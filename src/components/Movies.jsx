@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import notfound from "../images/image-not-found.jpg";
@@ -6,6 +8,7 @@ import DetailsMovies from "./DetailsMovie";
 import bcg from "../images/bcg.jpg";
 
 const Movies = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -14,7 +17,6 @@ const Movies = () => {
   console.log("selected", movieSelected);
   //   console.log("similar", similareMovies);
   console.log(search);
-
   //   console.log("--->", similareMovies);
 
   useEffect(() => {
@@ -66,6 +68,7 @@ const Movies = () => {
         scrollToTop();
         setMovieSelected(response.data);
         setMovieId(response.data.id);
+        navigate(`/movies/${response.data.id}`);
       } catch (error) {
         console.log(error);
       }
@@ -121,7 +124,7 @@ const Movies = () => {
       {movieSelected ? (
         <DetailsMovies
           movieSelected={movieSelected}
-          //   similareMovies={similareMovies}
+          handleClick={handleClick}
         />
       ) : (
         <div className="movie_details_none">

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
+import { useNavigate, useParams } from "react-router-dom";
 
-const DetailsMovies = ({ movieSelected }) => {
+const DetailsMovies = ({ movieSelected, handleClick }) => {
   const [similareMovies, setSimilareMovies] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -38,8 +39,8 @@ const DetailsMovies = ({ movieSelected }) => {
         const videos = responseTwo.data;
         const reviews = responseThree.data;
         const actors = responseFour.data;
-        console.log(actors);
-        // console.log(reviews);
+        // console.log("similar", similar);
+        console.log("reviews", reviews);
         // console.log("video", videos);
         // enregistrement data dans state
         setSimilareMovies(similar);
@@ -58,15 +59,13 @@ const DetailsMovies = ({ movieSelected }) => {
   const hours = Math.floor(runtimeMinutes / 60);
   const minutes = runtimeMinutes % 60;
 
-  // const handleClick = () => {};
-
   return (
     <main>
       <div className="movie_details container-right">
         <div className="left">
           <h1>{movieSelected.title}</h1>
           {movieSelected.poster_path === null ? (
-            <img src={notfound} alt="" />
+            <img src={notfound} alt="notfound" />
           ) : (
             <img
               src={`https://image.tmdb.org/t/p/original${movieSelected.poster_path}`}
@@ -75,6 +74,7 @@ const DetailsMovies = ({ movieSelected }) => {
           )}
         </div>
         <div className="right">
+          <button>ADD TO FAVORITES</button>
           <div className="right_1">
             <div>
               <p> Recommandation :</p>
@@ -133,7 +133,7 @@ const DetailsMovies = ({ movieSelected }) => {
         </div>
       </div>
       <div className="container_bottom">
-        {/* -------- */}
+        {/* ---ACTORS----- */}
         <div className="trailer">
           <h3>Principal actors</h3>
           <div className="carroussel">
@@ -144,8 +144,9 @@ const DetailsMovies = ({ movieSelected }) => {
                     <div className="actors" key={index}>
                       {actor.profile_path === null ? (
                         <img
-                          src={`https://image.tmdb.org/t/p/original${notfound}`}
+                          src={notfound}
                           alt="avatar"
+                          style={{ width: "150px" }}
                         />
                       ) : (
                         <img
@@ -163,7 +164,7 @@ const DetailsMovies = ({ movieSelected }) => {
             <p>Voir tous les acteurs ➡️</p>
           </div>
         </div>
-        {/* -------- */}
+        {/* ---TRAILER----- */}
         <div className="trailer">
           <h3>Similar movies based on genres and keywords</h3>
           {trailer.results ? (
@@ -186,20 +187,23 @@ const DetailsMovies = ({ movieSelected }) => {
             </>
           )}
         </div>
-        {/* -------- */}
-
+        {/* ----SIMILAR---- */}
         <div className="similar">
           <h3>Similar movies based on genres and keywords</h3>
           {similareMovies.results ? (
             <div className="carroussel">
               {similareMovies.results.map((list, index) => (
                 <div key={index}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
-                    alt=""
-                    onClick={() => handleClick(list.id)}
-                  />
-                  <h4>{list.title}</h4>
+                  {list.poster_path === null ? null : (
+                    <>
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
+                        alt=""
+                        onClick={() => handleClick(list.id)}
+                      />
+                      <h4>{list.title}</h4>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -207,13 +211,13 @@ const DetailsMovies = ({ movieSelected }) => {
             "Aucun film similaire trouvé"
           )}
         </div>
-        {/* -------- */}
 
+        {/* ----REVIEWS---- */}
         <h3 style={{ marginTop: "6rem" }}>Reviews on movie</h3>
         <div className="all_reviews">
-          {reviews.results ? (
-            <div className="reviews">
-              {reviews.results.map(
+          <div className="reviews">
+            {reviews.results && reviews.results.length > 0 ? (
+              reviews.results.map(
                 (
                   {
                     content,
@@ -247,14 +251,14 @@ const DetailsMovies = ({ movieSelected }) => {
                     </div>
                   </div>
                 )
-              )}
-            </div>
-          ) : (
-            <>
-              <br />
-              <p>Aucun commentaires trouvé 😱</p>
-            </>
-          )}
+              )
+            ) : (
+              <>
+                <br />
+                <p>No reviews found 😱</p>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </main>

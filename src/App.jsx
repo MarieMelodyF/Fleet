@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Movies from "./components/Movies";
 import GetToken from "./components/pages/GetToken";
 import Signup from "./components/pages/Signup";
+import DetailsMovies from "./components/DetailsMovie";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -63,9 +64,10 @@ function App() {
         <Routes>
           <Route>
             <Route
-              path="/"
+              path="/movies/*"
               element={<Movies setSearch={setSearch} search={search} />}
             />
+
             {<Route path="/gettoken" element={<GetToken />} />}
             <Route
               path="/signup/approved"
