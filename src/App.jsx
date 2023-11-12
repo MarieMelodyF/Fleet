@@ -5,9 +5,8 @@ import axios from "axios";
 import "./App.css";
 import Header from "./components/Header";
 import Movies from "./components/Movies";
-import GetToken from "./components/pages/GetToken";
-import Signup from "./components/pages/Signup";
-import DetailsMovies from "./components/DetailsMovie";
+import GetToken from "./pages/Signup";
+import Signup from "./pages/Signup";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -47,7 +46,6 @@ function App() {
         }
       );
 
-      // console.log("accountID IN APP", response);
       setAccountId(response.data.id);
     } catch (error) {
       console.error(

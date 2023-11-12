@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
-import { useNavigate, useParams } from "react-router-dom";
 
 const DetailsMovies = ({ movieSelected, handleClick }) => {
   const [similareMovies, setSimilareMovies] = useState([]);
@@ -40,7 +39,7 @@ const DetailsMovies = ({ movieSelected, handleClick }) => {
         const reviews = responseThree.data;
         const actors = responseFour.data;
         // console.log("similar", similar);
-        console.log("reviews", reviews);
+        // console.log("reviews", reviews);
         // console.log("video", videos);
         // enregistrement data dans state
         setSimilareMovies(similar);

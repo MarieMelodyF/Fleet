@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo.svg";
-import GetToken from "./pages/GetToken";
+import GetToken from "../pages/GetToken";
 
 const Header = ({ loggedInUserId }) => {
-  // console.log("loggedInUserId IN HEADER", loggedInUserId);
-
   return (
     <div className="head">
       <div>
-        <Link to="/">
-          <img src={logo} alt="" />
-        </Link>
+        <img src={logo} alt="" />
         <GetToken loggedInUserId={loggedInUserId} />
       </div>
       <div>

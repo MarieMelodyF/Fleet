@@ -16,8 +16,7 @@ const Movies = () => {
   const [movieId, setMovieId] = useState();
   console.log("selected", movieSelected);
   //   console.log("similar", similareMovies);
-  console.log(search);
-  //   console.log("--->", similareMovies);
+  // console.log(search);
 
   useEffect(() => {
     const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
