@@ -8,6 +8,7 @@ import Movies from "./components/Movies";
 import GetToken from "./pages/Signup";
 import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -62,6 +63,7 @@ function App() {
         <Header loggedInUserId={loggedInUserId} />
         <Routes>
           <Route>
+            <Route path="/" element={<Home />} />
             <Route
               path="/movies/*"
               element={

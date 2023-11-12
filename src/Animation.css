@@ -1,0 +1,135 @@
+/* -------------------- */
+/* BUTTON HOME */
+/* -------------------- */
+main .button-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 200px;
+  color: white;
+  font-size: 20px;
+  animation: wiggle 4s linear infinite;
+}
+
+.button-home {
+  /* color: #fff; */
+  background-color: rgb(60, 107, 109);
+  border-radius: 6px;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+.button-home span {
+  transition: all 0.3s;
+}
+.button-home::before {
+  content: "";
+  position: absolute;
+  bottom: 1;
+  left: 1;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgb(69, 122, 124);
+  border-bottom-color: rgb(69, 122, 124);
+  transform: scale(3, 1.5);
+  margin: 1px;
+}
+
+.button-home:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.button-home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.8s;
+  background-color: rgba(255, 255, 255, 0.21);
+  border-radius: 6px;
+}
+.button-home:hover::after {
+  opacity: 0;
+  transform: scale(0.9, 1);
+}
+
+/* Keyframes */
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-3deg);
+  }
+  20% {
+    transform: rotateZ(3deg);
+  }
+  25% {
+    transform: rotateZ(-3deg);
+  }
+  30% {
+    transform: rotateZ(1.5deg);
+  }
+  35% {
+    transform: rotateZ(-1deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+/* -------------------- */
+/* SCROLLBAR SIDE MENU */
+/* -------------------- */
+
+.side_menu::-webkit-scrollbar {
+  width: 12px;
+}
+
+.side_menu::-webkit-scrollbar-track {
+  background: rgb(69, 122, 124);
+}
+
+.side_menu::-webkit-scrollbar-thumb {
+  background-color: rgb(93, 160, 162);
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(29, 77, 79);
+}
+/* ALL REVIEWS SCROLLBAR */
+.all_reviews::-webkit-scrollbar {
+  width: 12px;
+}
+
+.all_reviews::-webkit-scrollbar-track {
+  background: rgb(69, 122, 124);
+}
+
+.all_reviews::-webkit-scrollbar-thumb {
+  background-color: rgb(93, 160, 162);
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(29, 77, 79);
+}
+
+/* -------------------- */
+/* DELETE BUTTON */
+/* -------------------- */
+.delete-button:hover {
+  height: 30px;
+  width: 30px;
+  background-color: red;
+  color: white;
+}

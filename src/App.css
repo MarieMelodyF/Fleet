@@ -1,7 +1,12 @@
+@import "./Animation.css";
+
 body {
   background-color: rgb(69, 122, 124);
 }
 
+a {
+  text-decoration: none;
+}
 h1 {
   font-size: 30px;
   text-align: center;
@@ -17,6 +22,33 @@ h3 {
 }
 h4 {
   text-align: center;
+}
+.background-home {
+  background-image: url(./images/bcg.jpg);
+  background-position: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: calc(100vh - 12.9vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  height: 80%;
+  font-weight: bold;
+  /* height: 100vh; */
+}
+
+.home h1 {
+  background-color: rgba(34, 34, 34, 0.269);
 }
 
 /* ------------ */
@@ -43,11 +75,14 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 1px solid red;
+  /* justify-content: center; */
+  /* border: 1px solid red; */
+  border-right: 1px solid darkslategrey;
   margin: 1rem;
-  padding: 2rem;
+  padding: 4rem;
   width: 200px;
+  height: 100vh;
+  overflow: hidden scroll;
 }
 
 .list img {
@@ -64,23 +99,31 @@ h4 {
   flex-wrap: wrap;
   align-items: center;
 }
-
+.reset {
+  border-radius: 2px;
+  margin: 1rem;
+  font-weight: bold;
+}
+.rated {
+  padding-top: 2rem;
+}
 /* -------------------- */
 /* ---MOVIES DETAILS--- */
 /* -------------------- */
 .movie_details {
   padding: 2rem;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   /* flex: 1; */
 }
 .movie_details_none {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
-  border: 1px solid blue;
+  padding-top: 5rem;
+  /* border: 1px solid blue; */
   flex: 1;
   font-size: 20px;
+  height: 100vh;
 }
 .movie_details_none p {
   margin-top: 2rem;
@@ -92,19 +135,13 @@ h4 {
   z-index: 1;
 }
 
-.text_none {
-  position: absolute;
-  top: 300px;
-  z-index: 2;
-  font-weight: bold;
-  color: rgb(238, 253, 253);
-  background-color: rgba(46, 44, 44, 0.513);
-  /* opacity: 0.8; */
+.top_rated {
+  border: 1px solid red;
 }
 .container {
   display: flex;
   justify-content: center;
-  border: 1px solid rgb(23, 18, 18);
+  /* border: 1px solid rgb(23, 18, 18); */
   gap: 1rem;
   margin: 1rem;
 }
@@ -112,14 +149,14 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgb(23, 18, 18);
+  /* border: 1px solid rgb(23, 18, 18); */
   gap: 1rem;
 }
 .container-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(23, 18, 18);
+  /* border: 1px solid rgb(23, 18, 18); */
   /* background-color: aliceblue; */
 }
 .movie_details img {
@@ -185,7 +222,6 @@ h4 {
 .carroussel {
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
   overflow: scroll hidden;
   width: 1150px;
   margin-top: 2rem;
@@ -225,19 +261,6 @@ h4 {
   align-items: center;
 }
 
-.all_reviews::-webkit-scrollbar {
-  width: 12px;
-}
-
-.all_reviews::-webkit-scrollbar-track {
-  background: rgb(69, 122, 124);
-}
-
-.all_reviews::-webkit-scrollbar-thumb {
-  background-color: rgb(93, 160, 162);
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid rgb(29, 77, 79);
-}
 .review img {
   height: 40px;
   width: 40px;
@@ -329,12 +352,6 @@ h4 {
   border-radius: 50%;
   position: absolute;
   /* z-index: 2; */
-}
-.delete-button:hover {
-  height: 30px;
-  width: 30px;
-  background-color: red;
-  color: white;
 }
 
 .fav_title {

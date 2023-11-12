@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
-import bcg from "../images/bcg.jpg";
+import TopMovie from "./TopMovie";
 
 const Movies = ({ accountId, loggedInUserId }) => {
   const navigate = useNavigate();
@@ -88,7 +87,15 @@ const Movies = ({ accountId, loggedInUserId }) => {
     <main className="container">
       <div className="side_menu">
         <SearchBar search={search} setSearch={setSearch} />
-        <button onClick={handleReset}>Reset</button>
+        <button className="reset" onClick={handleReset}>
+          Reset
+        </button>
+        {search ? null : (
+          <h2 style={{ paddingTop: "2rem", fontWeight: "bold" }}>
+            Actualy aviable :
+          </h2>
+        )}
+
         <div>
           <>
             {data.results ? (
@@ -97,7 +104,9 @@ const Movies = ({ accountId, loggedInUserId }) => {
                   ({ original_title, id, poster_path, popularity }) => {
                     return (
                       <div className="list" key={id}>
-                        <h4>{original_title}</h4>
+                        <h4 style={{ marginBottom: "5px" }}>
+                          {original_title}
+                        </h4>
                         {poster_path === null ? (
                           <img src={notfound} alt="" />
                         ) : (
@@ -127,14 +136,15 @@ const Movies = ({ accountId, loggedInUserId }) => {
         />
       ) : (
         <div className="movie_details_none">
-          <div className="text_none">
+          <div>
             <h1>Welcome to TMDB Copy</h1>
             <p>
               For information on a film, please search and/or click on a film
             </p>
           </div>
-
-          <img src={bcg} alt="" className="bcg" />
+          <div className="top_rated">
+            <TopMovie />
+          </div>
         </div>
       )}
     </main>
