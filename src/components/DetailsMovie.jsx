@@ -10,6 +10,7 @@ const DetailsMovies = ({
   loggedInUserId,
 }) => {
   const [similareMovies, setSimilareMovies] = useState([]);
+  const [recommendMovies, setRecommendMovies] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [actors, setActors] = useState([]);
@@ -25,6 +26,7 @@ const DetailsMovies = ({
         let two = `https://api.themoviedb.org/3/movie/${movieSelected.id}/videos?language=fr&api_key=${API_KEY}`;
         let three = `https://api.themoviedb.org/3/movie/${movieSelected.id}/reviews?language=frS&page=1&api_key=${API_KEY}`;
         let four = `https://api.themoviedb.org/3/movie/${movieSelected.id}/credits?language=frS&api_key=${API_KEY}`;
+        let five = `https://api.themoviedb.org/3/movie/${movieSelected.id}/recommendations?language=fr&page=1&api_key=${API_KEY}`;
 
         const responseOne = await axios.get(one, {
           headers: { Authorization: `Bearer ${token}` },
@@ -38,19 +40,25 @@ const DetailsMovies = ({
         const responseFour = await axios.get(four, {
           headers: { Authorization: `Bearer ${token}` },
         });
+        const responseFive = await axios.get(five, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         //destructure de la data
         const similar = responseOne.data;
         const videos = responseTwo.data;
         const reviews = responseThree.data;
         const actors = responseFour.data;
+        const recommend = responseFive.data;
+        console.log("recommander", recommend);
         // console.log("similar", similar);
         // console.log("reviews", reviews);
         // console.log("video", videos);
         // enregistrement data dans state
-        setSimilareMovies(similar);
-        setTrailer(videos);
-        setReviews(reviews);
         setActors(actors);
+        setTrailer(videos);
+        setRecommendMovies(recommend);
+        setSimilareMovies(similar);
+        setReviews(reviews);
       } catch (error) {
         console.log(error);
       }
@@ -102,7 +110,7 @@ const DetailsMovies = ({
           ) : (
             <img
               src={`https://image.tmdb.org/t/p/original${movieSelected.poster_path}`}
-              alt=""
+              alt={`image du film ${movieSelected.title}`}
             />
           )}
         </div>
@@ -197,9 +205,10 @@ const DetailsMovies = ({
             <p>Voir tous les acteurs ➡️</p>
           </div>
         </div>
+
         {/* ---TRAILER----- */}
         <div className="trailer">
-          <h3>Similar movies based on genres and keywords</h3>
+          <h3>Trailer of movies</h3>
           {trailer.results ? (
             <div className="carroussel">
               {trailer.results.map((trailer, index) => (
@@ -220,6 +229,36 @@ const DetailsMovies = ({
             </>
           )}
         </div>
+
+        {/* ----RECOMMEND---- */}
+        <div className="similar">
+          <h3>Recommended movies </h3>
+          {recommendMovies.results ? (
+            <div className="carroussel">
+              {recommendMovies.results.map((list, index) => (
+                <div key={index}>
+                  {list.poster_path === null ? null : (
+                    <>
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
+                        alt=""
+                        onClick={() => handleClick(list.id)}
+                      />
+                      {list.title.length > 15 ? (
+                        <h4> {`${list.title.substring(0, 19)}...`}</h4>
+                      ) : (
+                        <h4>{list.title}</h4>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            "Aucun film similaire trouvé"
+          )}
+        </div>
+
         {/* ----SIMILAR---- */}
         <div className="similar">
           <h3>Similar movies based on genres and keywords</h3>
@@ -234,7 +273,11 @@ const DetailsMovies = ({
                         alt=""
                         onClick={() => handleClick(list.id)}
                       />
-                      <h4>{list.title}</h4>
+                      {list.title.length > 15 ? (
+                        <h4> {`${list.title.substring(0, 19)}...`}</h4>
+                      ) : (
+                        <h4>{list.title}</h4>
+                      )}
                     </>
                   )}
                 </div>
