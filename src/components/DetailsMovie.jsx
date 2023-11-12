@@ -3,7 +3,12 @@ import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
 
-const DetailsMovies = ({ movieSelected, handleClick }) => {
+const DetailsMovies = ({
+  movieSelected,
+  handleClick,
+  accountId,
+  loggedInUserId,
+}) => {
   const [similareMovies, setSimilareMovies] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -58,6 +63,35 @@ const DetailsMovies = ({ movieSelected, handleClick }) => {
   const hours = Math.floor(runtimeMinutes / 60);
   const minutes = runtimeMinutes % 60;
 
+  // ADD TO FAV
+  const handleAddToFav = async () => {
+    try {
+      const id = movieSelected.id;
+      // console.log("log id", id);
+      if (id) {
+        const response = await axios.post(
+          `https://api.themoviedb.org/3/account/${accountId}/favorite?session_id=${loggedInUserId}&api_key=${API_KEY}`,
+          {
+            media_type: "movie",
+            media_id: id,
+            favorite: true,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // console.log("response ADD FAV", response);
+      } else {
+        console.error("l'id du film n'est pas connu ");
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <main>
       <div className="movie_details container-right">
@@ -73,7 +107,7 @@ const DetailsMovies = ({ movieSelected, handleClick }) => {
           )}
         </div>
         <div className="right">
-          <button>ADD TO FAVORITES</button>
+          <button onClick={handleAddToFav}>ADD TO FAVORITES</button>
           <div className="right_1">
             <div>
               <p> Recommandation :</p>

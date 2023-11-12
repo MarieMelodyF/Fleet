@@ -7,7 +7,7 @@ import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
 import bcg from "../images/bcg.jpg";
 
-const Movies = () => {
+const Movies = ({ accountId, loggedInUserId }) => {
   const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -15,8 +15,6 @@ const Movies = () => {
   const [movieSelected, setMovieSelected] = useState();
   const [movieId, setMovieId] = useState();
   console.log("selected", movieSelected);
-  //   console.log("similar", similareMovies);
-  // console.log(search);
 
   useEffect(() => {
     const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -124,6 +122,8 @@ const Movies = () => {
         <DetailsMovies
           movieSelected={movieSelected}
           handleClick={handleClick}
+          accountId={accountId}
+          loggedInUserId={loggedInUserId}
         />
       ) : (
         <div className="movie_details_none">

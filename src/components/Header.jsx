@@ -6,11 +6,16 @@ const Header = ({ loggedInUserId }) => {
   return (
     <div className="head">
       <div>
-        <img src={logo} alt="" />
+        <Link to="/movies">
+          <img src={logo} alt="" />
+        </Link>
         <GetToken loggedInUserId={loggedInUserId} />
       </div>
       <div>
         <p>Movie App</p>
+        <Link to="/favorites">
+          <p>Favorites</p>
+        </Link>
       </div>
     </div>
   );

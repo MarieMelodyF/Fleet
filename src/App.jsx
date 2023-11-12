@@ -7,13 +7,14 @@ import Header from "./components/Header";
 import Movies from "./components/Movies";
 import GetToken from "./pages/Signup";
 import Signup from "./pages/Signup";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [search, setSearch] = useState("");
   const [loggedInUserId, setLoggedInUserId] = useState(
     null || Cookies.get("userId")
   );
-  // console.log("loggedInUserId IN APP =>", loggedInUserId);
+  console.log("loggedInUserId IN APP =>", loggedInUserId);
   const [accountId, setAccountId] = useState();
   console.log("accoundId in APP", accountId);
 
@@ -63,13 +64,30 @@ function App() {
           <Route>
             <Route
               path="/movies/*"
-              element={<Movies setSearch={setSearch} search={search} />}
+              element={
+                <Movies
+                  setSearch={setSearch}
+                  search={search}
+                  accountId={accountId}
+                  loggedInUserId={loggedInUserId}
+                />
+              }
             />
 
-            {<Route path="/gettoken" element={<GetToken />} />}
+            <Route path="/gettoken" element={<GetToken />} />
             <Route
               path="/signup/approved"
               element={<Signup onSignup={handleSignup} />}
+            />
+
+            <Route
+              path="/favorites"
+              element={
+                <Favorites
+                  accountId={accountId}
+                  loggedInUserId={loggedInUserId}
+                />
+              }
             />
           </Route>
         </Routes>
