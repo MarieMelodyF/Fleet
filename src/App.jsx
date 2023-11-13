@@ -9,6 +9,7 @@ import GetToken from "./pages/Signup";
 import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import AllActors from "./pages/AllActors";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -36,10 +37,10 @@ function App() {
   // func LOGOUT
   const handleLogOut = () => {
     Cookies.remove("userId");
-    setLoggedInUserId(""); // Réinitialiser loggedInUserId
+    setLoggedInUserId("");
   };
 
-  // Recupèrer l'account ID
+  // Recupèrer l'account ID via requete
   const fetchAccountData = async (loggedInUserId) => {
     try {
       const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -84,16 +85,6 @@ function App() {
                 />
               }
             />
-            {/* <Route
-              path="/gettoken"
-              element={
-                <GetToken
-                  loggedInUserId={loggedInUserId}
-                  setLoggedInUserId={setLoggedInUserId}
-                  handleLogOut={handleLogOut}
-                />
-              }
-            /> */}
             <Route
               path="/signup/approved"
               element={<Signup onSignup={handleSignup} />}
@@ -108,6 +99,13 @@ function App() {
                 />
               }
             />
+            <Route path="/movies/:id/all-teams" element={<AllActors />} />
+
+            {/* FOR WATCH LIST BODY : {
+  "media_type": "movie",
+  "media_id": 575264,
+  "watchlist": true
+} */}
           </Route>
         </Routes>
       </Router>

@@ -21,7 +21,7 @@ const Signup = ({ onSignup }) => {
     const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
     const token =
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmMzYmE3NmM3OGU2ODJhNjUxZjIzMmZmNTljNDVjNSIsInN1I6IjY1NGNlM2RkZmQ0ZjgwMDBhZTJkMzk3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yfONWJVpL39pOedGYZ5Pr5ZqJhp_EBxgOe8nidjGY2Q";
-
+    // CREATE USER/SESSION ID
     try {
       const response = await axios.post(
         `https://api.themoviedb.org/3/authentication/session/new?api_key=${API_KEY}&request_token=${REQUEST_TOKEN}`,

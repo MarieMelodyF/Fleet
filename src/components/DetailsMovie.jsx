@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
@@ -15,6 +16,7 @@ const DetailsMovies = ({
   const [reviews, setReviews] = useState([]);
   const [actors, setActors] = useState([]);
   // console.log(actors);
+  const navigate = useNavigate();
 
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
   const token =
@@ -202,7 +204,12 @@ const DetailsMovies = ({
               </>
             ) : null}
 
-            <p>Voir tous les acteurs ➡️</p>
+            <Link
+              to={`/movies/${movieSelected.id}/all-teams`}
+              state={{ actors: actors }}
+            >
+              <p>Voir tous les acteurs ➡️</p>
+            </Link>
           </div>
         </div>
 

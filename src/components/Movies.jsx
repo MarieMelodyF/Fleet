@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
 import TopMovie from "./TopMovie";
+import CardTopMovies from "./CardTopMovies";
 
 const Movies = ({ accountId, loggedInUserId }) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
             }
           );
           setData(response.data);
-          console.log("response 1", response);
+          // console.log("response 1", response);
         } else {
           const response = await axios.get(
             `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=fr-US&page=1&sort_by=popularity.desc&api_key=${API_KEY}`,
@@ -42,7 +43,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
               },
             }
           );
-          //   console.log("response 2", response);
+          // console.log("response 2", response);
           setData(response.data);
           setIsLoading(false);
         }
@@ -77,6 +78,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
   const handleReset = () => {
     setSearch("");
     setMovieSelected(null);
+    navigate("/movies");
   };
 
   return isLoading ? (
@@ -84,69 +86,87 @@ const Movies = ({ accountId, loggedInUserId }) => {
       <p>"en chargement"</p>
     </>
   ) : (
-    <main className="container">
-      <div className="side_menu">
-        <SearchBar search={search} setSearch={setSearch} />
-        <button className="reset" onClick={handleReset}>
-          Reset
-        </button>
-        {search ? null : (
-          <h2 style={{ paddingTop: "2rem", fontWeight: "bold" }}>
-            Actualy aviable :
-          </h2>
-        )}
-
-        <div>
-          <>
-            {data.results ? (
-              <>
-                {data.results.map(
-                  ({ original_title, id, poster_path, popularity }) => {
-                    return (
-                      <div className="list" key={id}>
-                        <h4 style={{ marginBottom: "5px" }}>
-                          {original_title}
-                        </h4>
-                        {poster_path === null ? (
-                          <img src={notfound} alt="" />
-                        ) : (
-                          <img
-                            src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                            alt=""
-                            onClick={(event) => handleClick(id)}
-                          />
-                        )}
-                      </div>
-                    );
-                  }
-                )}
-              </>
-            ) : (
-              "null"
-            )}
-          </>
+    <main className="container ">
+      <div className="side_left">
+        <div className="side_top">
+          <SearchBar search={search} setSearch={setSearch} />
+          <button className="reset" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+        <div className="side_menu">
+          {search ? null : (
+            <h2 style={{ paddingTop: "2rem", fontWeight: "bold" }}>
+              Actualy aviable :
+            </h2>
+          )}
+          <div>
+            <>
+              {data.results ? (
+                <>
+                  {data.results.map(
+                    ({ original_title, id, poster_path, popularity }) => {
+                      return (
+                        <div className="list" key={id}>
+                          <h4 style={{ marginBottom: "5px" }}>
+                            {original_title}
+                          </h4>
+                          {poster_path === null ? (
+                            <img src={notfound} alt="" />
+                          ) : (
+                            <img
+                              src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                              alt=""
+                              onClick={(event) => handleClick(id)}
+                            />
+                          )}
+                        </div>
+                      );
+                    }
+                  )}
+                </>
+              ) : (
+                "null"
+              )}
+            </>
+          </div>
         </div>
       </div>
-      {movieSelected ? (
-        <DetailsMovies
-          movieSelected={movieSelected}
-          handleClick={handleClick}
-          accountId={accountId}
-          loggedInUserId={loggedInUserId}
-        />
-      ) : (
-        <div className="movie_details_none">
-          <div>
-            <h1>Welcome to TMDB Copy</h1>
-            <p>
-              For information on a film, please search and/or click on a film
-            </p>
+      <div className="side_rigth">
+        {movieSelected ? (
+          <DetailsMovies
+            movieSelected={movieSelected}
+            handleClick={handleClick}
+            accountId={accountId}
+            loggedInUserId={loggedInUserId}
+          />
+        ) : (
+          <div className="movie_details_none">
+            <div className="info">
+              <div className="test">
+                <h1>Welcome to my movie APP</h1>
+                <h1
+                  style={{
+                    fontSize: "20px",
+                    marginTop: "1rem",
+                  }}
+                >
+                  Create with TMDB api
+                </h1>
+              </div>
+              <p>This website recense all movies existing. </p>
+              <p>
+                You can find out more about a film by clicking on the film list
+                on the left, or by searching by title.
+              </p>
+            </div>
+            <div className="top_rated">
+              <div className="underline"></div>
+              <CardTopMovies handleClick={handleClick} />
+            </div>
           </div>
-          <div className="top_rated">
-            <TopMovie />
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </main>
   );
 };

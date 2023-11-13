@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 h1 {
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
 }
 h2 {
@@ -23,6 +23,7 @@ h3 {
   text-align: center;
 }
 h4 {
+  font-size: 16px;
   text-align: center;
 }
 .background-home {
@@ -67,8 +68,16 @@ h4 {
   align-items: center;
   /* background-color: rgb(69, 122, 124); */
   background-color: rgb(88, 147, 147);
-
   border-bottom: 1px solid lightgray;
+}
+.sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  height: 70px;
+  border: 1px solid red;
 }
 
 /* ------------ */
@@ -79,18 +88,28 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /* border: 1px solid red; */
   border-right: 1px solid darkslategrey;
-  margin: 1rem;
-  padding: 4rem;
-  width: 200px;
+  width: 250px;
   height: 100vh;
   overflow: hidden scroll;
-  /* background-color: rgb(88, 147, 147); */
-  background-color: rgba(84, 144, 146, 0.641);
+  background-color: rgba(102, 185, 185, 0.215);
+}
+.side_top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.side_rigth {
+  border: 1px solid rgb(55, 255, 0);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5rem;
+  font-size: 20px;
+}
 .list img {
   height: 250px;
   object-fit: contain;
@@ -109,28 +128,64 @@ h4 {
   border-radius: 2px;
   margin: 1rem;
   font-weight: bold;
+  cursor: pointer;
 }
 .rated {
   padding-top: 2rem;
+}
+.info {
+  text-align: center;
+}
+
+.test {
+  font-weight: bold;
+  color: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  background-color: rgba(102, 185, 185, 0.215);
+}
+.underline {
+  border-bottom: 2px solid darkslategray;
+  /* width: 1250px; */
+  margin: 2rem 0;
+}
+
+.card-wrapp button {
+  border-radius: 2px;
+  height: 30px;
+  width: 160px;
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.active {
+  background-color: darkslategray;
+  color: white;
+}
+
+.notactive {
+  background-color: white;
+  color: darkslategray;
+  opacity: 0.6;
+}
+
+.notactive:hover {
+  background-color: white;
+  color: darkslategray;
+  opacity: 1;
 }
 /* -------------------- */
 /* ---MOVIES DETAILS--- */
 /* -------------------- */
 .movie_details {
   padding: 2rem;
-  /* border: 1px solid blue; */
-  /* flex: 1; */
+  border: 1px solid blue;
 }
-.movie_details_none {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  /* border: 1px solid blue; */
-  flex: 1;
-  font-size: 20px;
-  height: 100vh;
-}
+
 .movie_details_none p {
   margin-top: 2rem;
 }
@@ -141,13 +196,13 @@ h4 {
   z-index: 1;
 }
 
-.top_rated {
-  border: 1px solid red;
+.top_movies h3 {
+  font-weight: bold;
 }
 .container {
   display: flex;
   justify-content: center;
-  /* border: 1px solid rgb(23, 18, 18); */
+  border: 1px solid rgb(23, 18, 18);
   gap: 1rem;
   margin: 1rem;
 }
@@ -179,7 +234,10 @@ h4 {
   gap: 1rem;
   /* background-color: antiquewhite; */
 }
-
+.left h1 {
+  color: white;
+  font-weight: 400;
+}
 .right {
   margin: 0 2rem;
   padding: 2rem;
@@ -223,6 +281,7 @@ h4 {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .carroussel {
@@ -235,6 +294,9 @@ h4 {
   padding: 2rem;
   background-color: rgba(84, 144, 146, 0.641);
   border-radius: 10px;
+}
+.top_movies img {
+  cursor: pointer;
 }
 
 .carroussel::-webkit-scrollbar {
@@ -261,6 +323,7 @@ h4 {
   display: flex;
   flex-direction: column;
   /* border: 1px solid aliceblue; */
+  border-right: 1px solid darkslategrey;
   overflow: hidden scroll;
   height: 600px;
   width: 925px;
@@ -309,6 +372,7 @@ h4 {
 .actors {
   background-color: rgb(54, 168, 168);
   border-radius: 10px;
+  font-size: 15px;
 }
 
 /* -------------------- */
@@ -319,7 +383,7 @@ h4 {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  border: 1px solid rgb(23, 18, 18);
+  /* border: 1px solid rgb(23, 18, 18); */
   width: 1000px;
 }
 .fav img {
@@ -339,28 +403,82 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
-  border: 1px solid red;
-  padding: 2rem;
+  height: calc(100vh - 25vh);
+  margin: 2rem;
+  padding: 0 2rem;
+  border-radius: 10px;
+  background-color: rgba(102, 185, 185, 0.215);
 }
 .delete-button {
   margin: 10px;
   height: 25px;
   width: 25px;
   font-weight: bold;
-  /* background-color: white;
-  */
   background-color: rgb(54, 168, 168);
   transition: width 0.5s, height 0.5s, background-color 1s;
-  /* color: red; */
   color: white;
   border: 1px solid black;
   border-radius: 50%;
   position: absolute;
-  /* z-index: 2; */
 }
 
 .fav_title {
   width: 100px;
   height: 20px;
+}
+/* -------------------- */
+/* -----ALL ACTORS----- */
+/* -------------------- */
+
+.container_all_cast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1200px;
+  border: 1px solid red;
+}
+
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid yellow;
+  width: 100%;
+  margin-top: 2rem;
+}
+.team_left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team_left img {
+  height: 175px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.team_right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team_right img {
+  height: 175px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.all_crew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all_actors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

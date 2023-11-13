@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const SearchBar = ({ search, setSearch }) => {
-  //   const [search, setSearch] = useState("");
   return (
     <div>
       <input

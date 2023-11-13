@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const GetToken = ({ loggedInUserId, handleLogOut }) => {
-  console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
+  // console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
 
   const [userToken, setUserToken] = useState();
 
@@ -19,7 +19,7 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        //destructure de la data
+        // Destructure de la data
         const tokendone = responseOne.data.request_token;
         setUserToken(tokendone);
       } catch (error) {
@@ -30,23 +30,26 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
     fetchData();
   }, []);
 
+  // Fonction logout pour appel de la fonction handlelogout dans app
   const handleLogOutClick = () => {
     handleLogOut();
   };
 
   return (
     <div>
-      {/* Ask the user for permission for request token */}
+      {/* Ask the user for permission for request token*/}
       {loggedInUserId ? (
-        <div>
-          <p>Welcome</p>
-          <button onClick={handleLogOutClick}>Log out</button>
+        <div className="sign">
+          <p style={{ fontSize: "25px" }}>Welcome</p>
+          <button className="reset" onClick={handleLogOutClick}>
+            Log out
+          </button>
         </div>
       ) : (
         <Link
           to={`https://www.themoviedb.org/authenticate/${userToken}?redirect_to=http://localhost:5173/signup/approved`}
         >
-          <p>Inscrit toi</p>
+          <button className="reset">Sign up</button>
         </Link>
       )}
     </div>

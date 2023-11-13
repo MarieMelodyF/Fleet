@@ -9,13 +9,12 @@ const Header = ({ loggedInUserId, handleLogOut }) => {
         <Link to="/movies">
           <img src={logo} alt="" />
         </Link>
-        <GetToken loggedInUserId={loggedInUserId} handleLogOut={handleLogOut} />
       </div>
-      <div>
-        <p>Movie App</p>
-        <Link to="/favorites">
-          <p>Favorites</p>
-        </Link>
+      <Link to="/favorites">
+        <p>Favorites</p>
+      </Link>
+      <div className="rigth_head">
+        <GetToken loggedInUserId={loggedInUserId} handleLogOut={handleLogOut} />
       </div>
     </div>
   );

@@ -122,7 +122,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     </div>
   ) : (
     <div>
-      <h1>To add a movie you need to be connected. Go to Sign in 🙂</h1>
+      <h1>To add a movie you need to be connected. Go to Sign up 🙂</h1>
     </div>
   );
 };
