@@ -1,5 +1,6 @@
 This app is a site that lists all existing films.
 You can get information about these movies,
+See all cast and crew members (on film details),
 Search a movie by title,
 Create an account,
 Add to favorites (if account is created),
