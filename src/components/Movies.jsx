@@ -4,7 +4,6 @@ import axios from "axios";
 import SearchBar from "./SearchBar";
 import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
-import TopMovie from "./TopMovie";
 import CardTopMovies from "./CardTopMovies";
 
 const Movies = ({ accountId, loggedInUserId }) => {
