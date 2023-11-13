@@ -1,8 +1,13 @@
-# React + Vite
+This app is a site that lists all existing films.
+You can get information about these movies,
+Search a movie by title,
+Create an account,
+Add to favorites (if account is created),
+Add to a watchlist, see top rated movies, and upcoming movies.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To launch the project :
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Download or clone this repo
+2. yarn add
+3. yarn dev
+4. Enjoy !
