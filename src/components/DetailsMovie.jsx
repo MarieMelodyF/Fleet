@@ -208,8 +208,8 @@ const DetailsMovies = ({
 
         {/* ---TRAILER----- */}
         <div className="trailer">
-          <h3>Trailer of movies</h3>
-          {trailer.results ? (
+          <h3>Trailers of movies</h3>
+          {trailer.results && trailer.results.length > 0 ? (
             <div className="carroussel">
               {trailer.results.map((trailer, index) => (
                 <div key={index}>
@@ -225,7 +225,7 @@ const DetailsMovies = ({
           ) : (
             <>
               <br />
-              <p>Aucun trailer trouvé 😱</p>
+              <p>No trailer found 😱</p>
             </>
           )}
         </div>
@@ -233,7 +233,7 @@ const DetailsMovies = ({
         {/* ----RECOMMEND---- */}
         <div className="similar">
           <h3>Recommended movies </h3>
-          {recommendMovies.results ? (
+          {recommendMovies.results && recommendMovies.results.length > 0 ? (
             <div className="carroussel">
               {recommendMovies.results.map((list, index) => (
                 <div key={index}>
@@ -245,7 +245,7 @@ const DetailsMovies = ({
                         onClick={() => handleClick(list.id)}
                       />
                       {list.title.length > 15 ? (
-                        <h4> {`${list.title.substring(0, 19)}...`}</h4>
+                        <h4> {`${list.title.substring(0, 17)}...`}</h4>
                       ) : (
                         <h4>{list.title}</h4>
                       )}
@@ -274,7 +274,7 @@ const DetailsMovies = ({
                         onClick={() => handleClick(list.id)}
                       />
                       {list.title.length > 15 ? (
-                        <h4> {`${list.title.substring(0, 19)}...`}</h4>
+                        <h4> {`${list.title.substring(0, 17)}...`}</h4>
                       ) : (
                         <h4>{list.title}</h4>
                       )}

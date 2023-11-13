@@ -50,7 +50,7 @@ const TopMovie = () => {
                     onClick={() => handleClick(list.id)}
                   />
                   {list.title.length > 15 ? (
-                    <h4>{`${list.title.substring(0, 13)}...`}</h4>
+                    <h4>{`${list.title.substring(0, 12)}...`}</h4>
                   ) : (
                     <h4>{list.title}</h4>
                   )}
@@ -75,7 +75,7 @@ const TopMovie = () => {
                     onClick={() => handleClick(list.id)}
                   />
                   {list.title.length > 15 ? (
-                    <h4>{`${list.title.substring(0, 13)}...`}</h4>
+                    <h4>{`${list.title.substring(0, 12)}...`}</h4>
                   ) : (
                     <h4>{list.title}</h4>
                   )}

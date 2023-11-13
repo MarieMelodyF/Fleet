@@ -12,29 +12,34 @@ import Home from "./pages/Home";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [accountId, setAccountId] = useState();
+  console.log("accoundId in APP", accountId);
   const [loggedInUserId, setLoggedInUserId] = useState(
     null || Cookies.get("userId")
   );
   console.log("loggedInUserId IN APP =>", loggedInUserId);
-  const [accountId, setAccountId] = useState();
-  console.log("accoundId in APP", accountId);
 
   // recupere le session id dans signup
   const handleSignup = (userId) => {
     if (userId) {
       Cookies.set("userId", userId, { expires: 30 });
       setLoggedInUserId(userId);
-      fetchAccountData(loggedInUserId);
     }
   };
 
-  // Requete accound ID
   useEffect(() => {
     if (loggedInUserId) {
       fetchAccountData(loggedInUserId);
     }
   }, [loggedInUserId]);
 
+  // func LOGOUT
+  const handleLogOut = () => {
+    Cookies.remove("userId");
+    setLoggedInUserId(""); // Réinitialiser loggedInUserId
+  };
+
+  // Recupèrer l'account ID
   const fetchAccountData = async (loggedInUserId) => {
     try {
       const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -60,7 +65,11 @@ function App() {
   return (
     <>
       <Router>
-        <Header loggedInUserId={loggedInUserId} />
+        <Header
+          loggedInUserId={loggedInUserId}
+          setLoggedInUserId={setLoggedInUserId}
+          handleLogOut={handleLogOut}
+        />
         <Routes>
           <Route>
             <Route path="/" element={<Home />} />
@@ -75,8 +84,16 @@ function App() {
                 />
               }
             />
-
-            <Route path="/gettoken" element={<GetToken />} />
+            {/* <Route
+              path="/gettoken"
+              element={
+                <GetToken
+                  loggedInUserId={loggedInUserId}
+                  setLoggedInUserId={setLoggedInUserId}
+                  handleLogOut={handleLogOut}
+                />
+              }
+            /> */}
             <Route
               path="/signup/approved"
               element={<Signup onSignup={handleSignup} />}

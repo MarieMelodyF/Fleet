@@ -76,10 +76,10 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     }
   };
 
-  return (
+  return loggedInUserId ? (
     <div className="container_fav">
       <div className="card-fav">
-        {favorites.results ? (
+        {favorites.results && favorites.results.length > 0 ? (
           <>
             {favorites.results.map((fav, index) => (
               <div className="fav" key={index}>
@@ -120,7 +120,10 @@ const Favorites = ({ accountId, loggedInUserId }) => {
         )}
       </div>
     </div>
+  ) : (
+    <div>
+      <h1>To add a movie you need to be connected. Go to Sign in 🙂</h1>
+    </div>
   );
 };
-
 export default Favorites;

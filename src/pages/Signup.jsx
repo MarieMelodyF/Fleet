@@ -42,7 +42,7 @@ const Signup = ({ onSignup }) => {
       onSignup(newUserId);
 
       if (newUserId !== undefined) {
-        navigate("/");
+        navigate("/movies");
       }
     } catch (error) {
       console.error(error.message);

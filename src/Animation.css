@@ -101,11 +101,14 @@ main .button-home {
 }
 
 .side_menu::-webkit-scrollbar-track {
-  background: rgb(69, 122, 124);
+  /* background: rgb(69, 122, 124); */
+  background-color: rgba(84, 144, 146, 0.641);
 }
 
 .side_menu::-webkit-scrollbar-thumb {
   background-color: rgb(93, 160, 162);
+  /* background-color: rgba(84, 144, 146, 0.641); */
+
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 3px solid rgb(29, 77, 79);
 }

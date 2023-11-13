@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const GetToken = ({ loggedInUserId }) => {
-  // console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
+const GetToken = ({ loggedInUserId, handleLogOut }) => {
+  console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
+
   const [userToken, setUserToken] = useState();
 
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -29,11 +30,18 @@ const GetToken = ({ loggedInUserId }) => {
     fetchData();
   }, []);
 
+  const handleLogOutClick = () => {
+    handleLogOut();
+  };
+
   return (
     <div>
       {/* Ask the user for permission for request token */}
       {loggedInUserId ? (
-        <p>Bienvenue</p>
+        <div>
+          <p>Welcome</p>
+          <button onClick={handleLogOutClick}>Log out</button>
+        </div>
       ) : (
         <Link
           to={`https://www.themoviedb.org/authenticate/${userToken}?redirect_to=http://localhost:5173/signup/approved`}
