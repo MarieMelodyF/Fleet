@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo.svg";
 import GetToken from "../pages/GetToken";
+import { useMovieContext } from "../components/Context.jsx";
 
 const Header = ({ loggedInUserId, handleLogOut }) => {
+  const { updateMovieSelected } = useMovieContext();
+
+  // mettre à null le state selectedmovie
+  const reset = () => {
+    updateMovieSelected(null);
+  };
+
   return (
     <div className="head">
       <div>
-        <Link to="/movies">
+        <Link to="/movies" onClick={reset}>
           <img src={logo} alt="" />
         </Link>
       </div>

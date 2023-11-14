@@ -6,15 +6,17 @@ import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
 import CardTopMovies from "./CardTopMovies";
 import Loader from "./Loader.jsx";
+// import contexte, mise à jr state
+import { useMovieContext } from "../components/Context.jsx";
 
 const Movies = ({ accountId, loggedInUserId }) => {
+  const { movieSelected, updateMovieSelected } = useMovieContext();
+
   const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [movieSelected, setMovieSelected] = useState();
   const [movieId, setMovieId] = useState();
-  console.log("selected", movieSelected);
 
   useEffect(() => {
     const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -64,7 +66,8 @@ const Movies = ({ accountId, loggedInUserId }) => {
           `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=fr-FR`
         );
         scrollToTop();
-        setMovieSelected(response.data);
+        // setMovieSelected(response.data);
+        updateMovieSelected(response.data);
         setMovieId(response.data.id);
         navigate(`/movies/${response.data.id}`);
       } catch (error) {
@@ -76,9 +79,11 @@ const Movies = ({ accountId, loggedInUserId }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   const handleReset = () => {
     setSearch("");
-    setMovieSelected(null);
+    // setMovieSelected(null);
+    updateMovieSelected(null);
     navigate("/movies");
   };
 
@@ -105,26 +110,24 @@ const Movies = ({ accountId, loggedInUserId }) => {
             <>
               {data.results ? (
                 <>
-                  {data.results.map(
-                    ({ original_title, id, poster_path, popularity }) => {
-                      return (
-                        <div className="list" key={id}>
-                          <h4 style={{ marginBottom: "5px" }}>
-                            {original_title}
-                          </h4>
-                          {poster_path === null ? (
-                            <img src={notfound} alt="" />
-                          ) : (
-                            <img
-                              src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                              alt=""
-                              onClick={(event) => handleClick(id)}
-                            />
-                          )}
-                        </div>
-                      );
-                    }
-                  )}
+                  {data.results.map(({ original_title, id, poster_path }) => {
+                    return (
+                      <div className="list" key={id}>
+                        <h4 style={{ marginBottom: "5px" }}>
+                          {original_title}
+                        </h4>
+                        {poster_path === null ? (
+                          <img src={notfound} alt="" />
+                        ) : (
+                          <img
+                            src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                            alt=""
+                            onClick={() => handleClick(id)}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
                 </>
               ) : (
                 "null"

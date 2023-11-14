@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import notfound from "../images/image-not-found.jpg";
+// import contexte, mise à jr state
+import { useMovieContext } from "../components/Context";
 
 const Actors = () => {
+  const { updateMovieSelected } = useMovieContext();
   // recupère id de l'acteur params
   const navigate = useNavigate();
   const { id } = useParams();
@@ -35,7 +38,7 @@ const Actors = () => {
         const details = responseOne.data;
         const allMovieActor = responseTwo.data;
         const tvShow = responseThree.data;
-        console.log("allTVSHOW", tvShow);
+        // console.log("allTVSHOW", tvShow);
 
         // enregistrement data dans state
         setIsLoading(false);
@@ -49,6 +52,7 @@ const Actors = () => {
 
     fetchData();
   }, [id]);
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -107,18 +111,22 @@ const Actors = () => {
         <h3>All movie of {details.name} </h3>
         {allMovieActor.cast && allMovieActor.cast.length > 0 ? (
           <div className="carroussel">
-            {allMovieActor.cast.map((list, index) => (
+            {allMovieActor.cast.map((movieSelected, index) => (
               <div key={index}>
-                {list.poster_path === null ? null : (
+                {movieSelected.poster_path === null ? null : (
                   <>
                     <img
-                      src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
+                      src={`https://image.tmdb.org/t/p/original${movieSelected.poster_path}`}
                       alt=""
+                      onClick={() => {
+                        navigate(`/movies/${movieSelected.id}`);
+                        updateMovieSelected(movieSelected);
+                      }}
                     />
-                    {list.title.length > 15 ? (
-                      <h4> {`${list.title.substring(0, 14)}...`}</h4>
+                    {movieSelected.title.length > 15 ? (
+                      <h4> {`${movieSelected.title.substring(0, 14)}...`}</h4>
                     ) : (
-                      <h4>{list.title}</h4>
+                      <h4>{movieSelected.title}</h4>
                     )}
                   </>
                 )}

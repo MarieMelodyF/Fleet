@@ -14,12 +14,12 @@ import ActorDetails from "./pages/ActorsDetails";
 import Watchlist from "./pages/WatchList";
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [accountId, setAccountId] = useState();
-  console.log("accoundId in APP", accountId);
   const [loggedInUserId, setLoggedInUserId] = useState(
     null || Cookies.get("userId")
   );
+  const [search, setSearch] = useState("");
+  const [accountId, setAccountId] = useState();
+  console.log("accoundId in APP", accountId);
   console.log("loggedInUserId IN APP =>", loggedInUserId);
 
   // recupere le session id dans signup
@@ -112,11 +112,6 @@ function App() {
             />
             <Route path="/movies/:id/all-teams" element={<AllActors />} />
             <Route path="/actors/:id" element={<ActorDetails />} />
-            {/* FOR WATCH LIST BODY : {
-  "media_type": "movie",
-  "media_id": 575264,
-  "watchlist": true
-} */}
           </Route>
         </Routes>
       </Router>

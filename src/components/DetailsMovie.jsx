@@ -17,7 +17,7 @@ const DetailsMovies = ({
   const [reviews, setReviews] = useState([]);
   const [actors, setActors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(actors);
+  console.log("=>", movieSelected);
 
   // Times of movie
   const runtimeMinutes = movieSelected.runtime;
@@ -57,7 +57,7 @@ const DetailsMovies = ({
         const reviews = responseThree.data;
         const actors = responseFour.data;
         const recommend = responseFive.data;
-        console.log("recommander", recommend);
+        // console.log("recommander", recommend);
         // console.log("similar", similar);
         // console.log("reviews", reviews);
         // console.log("video", videos);
@@ -75,8 +75,6 @@ const DetailsMovies = ({
 
     fetchData();
   }, [movieSelected.id, token]);
-
-  // ----------------
 
   // ADD TO FAV
   const handleAddToFav = async () => {
@@ -173,15 +171,25 @@ const DetailsMovies = ({
 
             <div>
               <p>Genres :</p>
-              {movieSelected.genres.map((list, index) => (
-                <p key={index}> {list.name}</p>
-              ))}
+              {movieSelected.genres || movieSelected.genre_id ? (
+                <>
+                  {movieSelected.genres.map((list, index) => (
+                    <p key={index}> {list.name}</p>
+                  ))}
+                </>
+              ) : (
+                <p>N/C</p>
+              )}
             </div>
             <div>
               <p>Durée :</p>
-              <p>
-                {hours}h{minutes} min
-              </p>
+              {movieSelected.runtime === undefined ? (
+                <p>N/C </p>
+              ) : (
+                <p>
+                  {hours}h{minutes} min
+                </p>
+              )}
             </div>
             <div>
               <p>Réalisé le : {movieSelected.release_date}</p>
@@ -197,16 +205,22 @@ const DetailsMovies = ({
             <div className="prod">
               <p>Production :</p>
               <div className="prod_flex">
-                {movieSelected.production_companies.map((list, index) => (
-                  <div key={index}>
-                    {list.logo_path === null ? null : (
-                      <img
-                        src={`https://image.tmdb.org/t/p/original${list.logo_path}`}
-                        alt=""
-                      />
-                    )}
-                  </div>
-                ))}
+                {!movieSelected.production_companies ? (
+                  <p>N/C</p>
+                ) : (
+                  <>
+                    {movieSelected.production_companies.map((list, index) => (
+                      <div key={index}>
+                        {list.logo_path === null ? null : (
+                          <img
+                            src={`https://image.tmdb.org/t/p/original${list.logo_path}`}
+                            alt=""
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </>
+                )}
               </div>
             </div>
             <div>
@@ -234,7 +248,7 @@ const DetailsMovies = ({
                         <>
                           <Link
                             to={`/actors/${actor.id}`}
-                            onClick={scrollToTop}
+                            state={{ handleClick }}
                           >
                             <img
                               src={notfound}
