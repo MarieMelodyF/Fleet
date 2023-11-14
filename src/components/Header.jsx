@@ -18,12 +18,14 @@ const Header = ({ loggedInUserId, handleLogOut }) => {
           <img src={logo} alt="" />
         </Link>
       </div>
-      <Link to="/favorites">
-        <p>Favorites</p>
-      </Link>
-      <Link to="/watchlist">
-        <p>Watchlist</p>
-      </Link>
+      <div className="menu">
+        <Link to="/favorites">
+          <p>Favorites</p>
+        </Link>
+        <Link to="/watchlist">
+          <p>Watchlist</p>
+        </Link>
+      </div>
       <div className="rigth_head">
         <GetToken loggedInUserId={loggedInUserId} handleLogOut={handleLogOut} />
       </div>

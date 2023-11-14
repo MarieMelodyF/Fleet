@@ -109,13 +109,16 @@ const Movies = ({ accountId, loggedInUserId }) => {
           <div>
             <>
               {data.results ? (
-                <>
+                <div className="list_row">
                   {data.results.map(({ original_title, id, poster_path }) => {
                     return (
                       <div className="list" key={id}>
-                        <h4 style={{ marginBottom: "5px" }}>
-                          {original_title}
-                        </h4>
+                        {original_title.length > 15 ? (
+                          <h4> {`${original_title.substring(0, 19)}...`}</h4>
+                        ) : (
+                          <h4>{original_title}</h4>
+                        )}
+
                         {poster_path === null ? (
                           <img src={notfound} alt="" />
                         ) : (
@@ -128,7 +131,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
                       </div>
                     );
                   })}
-                </>
+                </div>
               ) : (
                 "null"
               )}

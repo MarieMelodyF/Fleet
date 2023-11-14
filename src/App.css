@@ -1,7 +1,7 @@
 @import "./Animation.css";
 @import "./Loader.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-
+@import "./Responsive.css";
 body {
   background-color: rgb(69, 122, 124);
   font-family: "Roboto", sans-serif;
@@ -78,7 +78,6 @@ h4 {
   align-items: center;
   width: 200px;
   height: 70px;
-  border: 1px solid red;
 }
 
 /* ------------ */
@@ -102,8 +101,8 @@ h4 {
 }
 
 .side_rigth {
-  border: 1px solid rgb(55, 255, 0);
-  flex: 1;
+  /* border: 1px solid rgb(55, 255, 0); */
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -202,7 +201,7 @@ h4 {
 }
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   border: 1px solid rgb(23, 18, 18);
   gap: 1rem;
   margin: 1rem;
