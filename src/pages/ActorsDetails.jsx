@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
+import notfound from "../images/image-not-found.jpg";
 
 const Actors = () => {
   // recupère id de l'acteur params
+  const navigate = useNavigate();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [details, setDetails] = useState([]);
@@ -33,7 +35,7 @@ const Actors = () => {
         const details = responseOne.data;
         const allMovieActor = responseTwo.data;
         const tvShow = responseThree.data;
-        console.log("allTVSHOW", details);
+        console.log("allTVSHOW", tvShow);
 
         // enregistrement data dans state
         setIsLoading(false);
@@ -53,17 +55,41 @@ const Actors = () => {
     <main className="container_actor">
       <div className="details">
         <div className="details_left">
-          <img
-            src={`https://image.tmdb.org/t/p/original${details.profile_path}`}
-            alt=""
-          />
+          {details.profile_path === null ? (
+            <img src={notfound} alt="" />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/original${details.profile_path}`}
+              alt=""
+            />
+          )}
         </div>
         <div className="details_rigth">
+          <button
+            style={{ width: "140px", height: "25px" }}
+            className="reset"
+            onClick={() => navigate("/movies")}
+          >
+            Back to homepage
+          </button>
           <h1 style={{ fontSize: "30px" }}>{details.name}</h1>
           <div>
-            <p>Né(e) le : {details.birthday}</p>
-            <p>Connu pour : {details.known_for_department}</p>
-            <p>À : {details.place_of_birth}</p>
+            {details.birthday === null ? (
+              <p>Né(e) le : N/C</p>
+            ) : (
+              <p>Né(e) le : {details.birthday}</p>
+            )}
+            {details.known_for_department === null ? (
+              <p>Connu pour : N/C</p>
+            ) : (
+              <p>Connu pour : {details.known_for_department}</p>
+            )}
+            {details.place_of_birth === null ? (
+              <p>À : N/C</p>
+            ) : (
+              <p>À : {details.place_of_birth}</p>
+            )}
+
             {details.deathday === null ? null : (
               <p>Décédé(e) le : {details.deathday}</p>
             )}
@@ -83,15 +109,14 @@ const Actors = () => {
           <div className="carroussel">
             {allMovieActor.cast.map((list, index) => (
               <div key={index}>
-                {list.backdrop_path === null ? null : (
+                {list.poster_path === null ? null : (
                   <>
                     <img
-                      src={`https://image.tmdb.org/t/p/original${list.backdrop_path}`}
+                      src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
                       alt=""
-                      onClick={() => handleClick(list.id)}
                     />
                     {list.title.length > 15 ? (
-                      <h4> {`${list.title.substring(0, 17)}...`}</h4>
+                      <h4> {`${list.title.substring(0, 14)}...`}</h4>
                     ) : (
                       <h4>{list.title}</h4>
                     )}
@@ -107,19 +132,18 @@ const Actors = () => {
       {/* ALL TV SHOW OF ACTOR */}
       <div className="all_movie_of_actor">
         <h3>All Tv Show of {details.name} </h3>
-        {tvShow.cast ? (
+        {tvShow.cast && tvShow.cast.length > 0 ? (
           <div className="carroussel">
             {tvShow.cast.map((list, index) => (
               <div key={index}>
-                {list.backdrop_path === null ? null : (
+                {list.poster_path === null ? null : (
                   <>
                     <img
-                      src={`https://image.tmdb.org/t/p/original${list.backdrop_path}`}
+                      src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
                       alt=""
-                      onClick={() => handleClick(list.id)}
                     />
                     {list.name.length > 15 ? (
-                      <h4> {`${list.name.substring(0, 17)}...`}</h4>
+                      <h4> {`${list.name.substring(0, 14)}...`}</h4>
                     ) : (
                       <h4>{list.name}</h4>
                     )}

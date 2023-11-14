@@ -11,6 +11,7 @@ import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import AllActors from "./pages/AllActors";
 import ActorDetails from "./pages/ActorsDetails";
+import Watchlist from "./pages/WatchList";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -95,6 +96,15 @@ function App() {
               path="/favorites"
               element={
                 <Favorites
+                  accountId={accountId}
+                  loggedInUserId={loggedInUserId}
+                />
+              }
+            />
+            <Route
+              path="/watchlist"
+              element={
+                <Watchlist
                   accountId={accountId}
                   loggedInUserId={loggedInUserId}
                 />

@@ -103,6 +103,38 @@ const DetailsMovies = ({
       console.log(error.response);
     }
   };
+  // ADD TO FAV
+  const handleAddToWatchList = async () => {
+    try {
+      const id = movieSelected.id;
+      // console.log("log id", id);
+      if (id) {
+        const response = await axios.post(
+          `https://api.themoviedb.org/3/account/${accountId}/watchlist?session_id=${loggedInUserId}&api_key=${API_KEY}`,
+          {
+            media_type: "movie",
+            media_id: id,
+            watchlist: true,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log("response ADD Watchlist", response);
+      } else {
+        console.error("l'id du film n'est pas connu ");
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return isLoading ? (
     <Loader />
@@ -121,7 +153,13 @@ const DetailsMovies = ({
           )}
         </div>
         <div className="right">
-          <button onClick={handleAddToFav}>ADD TO FAVORITES</button>
+          <button className="reset" onClick={handleAddToFav}>
+            ADD TO FAVORITES
+          </button>
+          <button className="reset" onClick={handleAddToWatchList}>
+            ADD TO WATCHLIST
+          </button>
+
           <div className="right_1">
             <div>
               <p> Recommandation :</p>
@@ -191,18 +229,23 @@ const DetailsMovies = ({
                     <div className="actors" key={index}>
                       {actor.profile_path === null ? (
                         <>
-                          <Link to={`/actors/${actor.id}`}>
+                          <Link
+                            to={`/actors/${actor.id}`}
+                            onClick={scrollToTop}
+                          >
                             <img
                               src={notfound}
                               alt="avatar"
                               style={{ width: "150px" }}
                             />
                           </Link>
-                          <p className="actor">{actor.name}</p>
                         </>
                       ) : (
                         <>
-                          <Link to={`/actors/${actor.id}`}>
+                          <Link
+                            to={`/actors/${actor.id}`}
+                            onClick={scrollToTop}
+                          >
                             <img
                               src={`https://image.tmdb.org/t/p/original${actor.profile_path}`}
                               alt="avatar"

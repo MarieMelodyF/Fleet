@@ -13,6 +13,9 @@ const Header = ({ loggedInUserId, handleLogOut }) => {
       <Link to="/favorites">
         <p>Favorites</p>
       </Link>
+      <Link to="/watchlist">
+        <p>Watchlist</p>
+      </Link>
       <div className="rigth_head">
         <GetToken loggedInUserId={loggedInUserId} handleLogOut={handleLogOut} />
       </div>

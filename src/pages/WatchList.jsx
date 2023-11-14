@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import notfound from "../images/image-not-found.jpg";
 import Loader from "../components/Loader";
 
-const Favorites = ({ accountId, loggedInUserId }) => {
-  const [favorites, setFavorites] = useState([]);
+const Watchlist = ({ accountId, loggedInUserId }) => {
+  const [watchList, setWatchList] = useState([]);
   const [idMovie, setIdMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   console.log("idmovie", idMovie);
@@ -16,7 +16,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmMzYmE3NmM3OGU2ODJhNjUxZjIzMmZmNTljNDVjNSIsInN1YiI6IjY1NGNlM2RkZmQ0ZjgwMDBhZTJkMzk3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yfONWJVpL39pOedGYZ5Pr5ZqJhp_EBxgOe8nidjGY2Q";
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/account/${accountId}/favorite/movies?language=fr&page=1&session_id=${loggedInUserId}&sort_by=created_at.asc&api_key=${API_KEY}`,
+          `https://api.themoviedb.org/3/account/${accountId}/watchlist/movies?language=fr&page=1&session_id=${loggedInUserId}&sort_by=created_at.asc&api_key=${API_KEY}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -25,8 +25,8 @@ const Favorites = ({ accountId, loggedInUserId }) => {
         );
 
         if (response.status === 200) {
-          //   console.log("favorites :", response.data.results);
-          setFavorites(response.data);
+          //   console.log("watchList :", response.data.results);
+          setWatchList(response.data);
           setIsLoading(false);
         } else {
           console.error(
@@ -45,35 +45,34 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     fetchData();
   }, [accountId, loggedInUserId]);
 
-  // DELETE ONE FAV
-  const deleteOneFav = async (id) => {
+  const deleteOne = async (id) => {
     const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
 
     try {
       const response = await axios.post(
-        `https://api.themoviedb.org/3/account/${accountId}/favorite?session_id=${loggedInUserId}&api_key=${API_KEY}`,
+        `https://api.themoviedb.org/3/account/${accountId}/watchlist?session_id=${loggedInUserId}&api_key=${API_KEY}`,
         {
           media_type: "movie",
           media_id: id,
-          favorite: false,
+          watchlist: false,
         }
       );
 
       if (response.status === 200) {
-        setFavorites((prevFavorites) => {
-          if (Array.isArray(prevFavorites.results)) {
+        setWatchList((prevWatchList) => {
+          if (Array.isArray(prevWatchList.results)) {
             return {
-              results: prevFavorites.results.filter((item) => item.id !== id),
+              results: prevWatchList.results.filter((item) => item.id !== id),
             };
           } else {
-            return prevFavorites;
+            return prevWatchList;
           }
         });
-        console.log("Film supprimé des favoris avec succès");
+        console.log("Film supprimé de la liste avec succès");
       }
     } catch (error) {
       console.error(
-        "Erreur lors de la suppression du film des favoris :",
+        "Erreur lors de la suppression du film de la liste :",
         error
       );
     }
@@ -84,9 +83,9 @@ const Favorites = ({ accountId, loggedInUserId }) => {
   ) : loggedInUserId ? (
     <div className="container_fav">
       <div className="card-fav">
-        {favorites.results && favorites.results.length > 0 ? (
+        {watchList.results && watchList.results.length > 0 ? (
           <>
-            {favorites.results.map((fav, index) => (
+            {watchList.results.map((fav, index) => (
               <div className="fav" key={index}>
                 {fav.original_title.length > 15
                   ? `${fav.original_title.substring(0, 19)}...`
@@ -96,7 +95,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
                     <button
                       className="delete-button"
                       onClick={() => {
-                        deleteOneFav(fav.id);
+                        deleteOne(fav.id);
                       }}
                     >
                       X
@@ -118,7 +117,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
         ) : (
           <div>
             <h1>
-              No movies added to favorites 😕. Go to a movie and add it with the
+              No movies added to watchList 😕. Go to a movie and add it with the
               button
             </h1>
           </div>
@@ -131,4 +130,4 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     </div>
   );
 };
-export default Favorites;
+export default Watchlist;
