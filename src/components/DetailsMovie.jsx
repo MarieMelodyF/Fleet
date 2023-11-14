@@ -19,6 +19,11 @@ const DetailsMovies = ({
   const [isLoading, setIsLoading] = useState(true);
   console.log(actors);
 
+  // Times of movie
+  const runtimeMinutes = movieSelected.runtime;
+  const hours = Math.floor(runtimeMinutes / 60);
+  const minutes = runtimeMinutes % 60;
+
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
   const token =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmMzYmE3NmM3OGU2ODJhNjUxZjIzMmZmNTljNDVjNSIsInN1YiI6IjY1NGNlM2RkZmQ0ZjgwMDBhZTJkMzk3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yfONWJVpL39pOedGYZ5Pr5ZqJhp_EBxgOe8nidjGY2Q";
@@ -71,16 +76,13 @@ const DetailsMovies = ({
     fetchData();
   }, [movieSelected.id, token]);
 
-  const runtimeMinutes = movieSelected.runtime;
-  const hours = Math.floor(runtimeMinutes / 60);
-  const minutes = runtimeMinutes % 60;
+  // ----------------
 
   // ADD TO FAV
   const handleAddToFav = async () => {
     try {
       const id = movieSelected.id;
-      // console.log("log id", id);
-      if (id) {
+      if (id && loggedInUserId) {
         const response = await axios.post(
           `https://api.themoviedb.org/3/account/${accountId}/favorite?session_id=${loggedInUserId}&api_key=${API_KEY}`,
           {
@@ -95,20 +97,21 @@ const DetailsMovies = ({
           }
         );
 
-        // console.log("response ADD FAV", response);
+        console.log("response ADD FAV", response.data.status_message);
       } else {
-        console.error("l'id du film n'est pas connu ");
+        console.error("An error occurred while adding the movie to favorites");
       }
     } catch (error) {
       console.log(error.response);
     }
   };
-  // ADD TO FAV
+  // ----------------
+  // ADD TO WATCHLIST
   const handleAddToWatchList = async () => {
     try {
       const id = movieSelected.id;
       // console.log("log id", id);
-      if (id) {
+      if (id && loggedInUserId) {
         const response = await axios.post(
           `https://api.themoviedb.org/3/account/${accountId}/watchlist?session_id=${loggedInUserId}&api_key=${API_KEY}`,
           {
@@ -123,9 +126,9 @@ const DetailsMovies = ({
           }
         );
 
-        console.log("response ADD Watchlist", response);
+        console.log("response ADD Watchlist", response.data.status_message);
       } else {
-        console.error("l'id du film n'est pas connu ");
+        console.error("An error occurred while adding the movie to watchlist ");
       }
     } catch (error) {
       console.log(error.response);

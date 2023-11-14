@@ -40,7 +40,9 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
       {/* Ask the user for permission for request token*/}
       {loggedInUserId ? (
         <div className="sign">
-          <p style={{ fontSize: "25px" }}>Welcome</p>
+          <p style={{ fontSize: "25px", color: "white", fontWeight: "400" }}>
+            Welcome
+          </p>
           <button className="reset" onClick={handleLogOutClick}>
             Log out
           </button>

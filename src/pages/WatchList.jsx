@@ -82,6 +82,9 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
     <Loader />
   ) : loggedInUserId ? (
     <div className="container_fav">
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
+        Your Watchlist Movies
+      </h1>
       <div className="card-fav">
         {watchList.results && watchList.results.length > 0 ? (
           <>
@@ -117,7 +120,7 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
         ) : (
           <div>
             <h1>
-              No movies added to watchList 😕. Go to a movie and add it with the
+              No movies added to watchlist 😕. Go to a movie and add it with the
               button
             </h1>
           </div>

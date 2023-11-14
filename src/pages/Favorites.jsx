@@ -83,6 +83,9 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     <Loader />
   ) : loggedInUserId ? (
     <div className="container_fav">
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
+        Your Favorites Movies
+      </h1>
       <div className="card-fav">
         {favorites.results && favorites.results.length > 0 ? (
           <>

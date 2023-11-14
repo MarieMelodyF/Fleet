@@ -382,6 +382,7 @@ h4 {
 
 .container_fav {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   /* border: 1px solid rgb(23, 18, 18); */
