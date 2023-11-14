@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import notfound from "../images/image-not-found.jpg";
+import Loader from "../components/Loader";
 const AllActors = () => {
   const navigate = useNavigate();
   const [actors, setActors] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
   // recupére la data de la props actors dans detailsMovie
@@ -12,6 +14,7 @@ const AllActors = () => {
       const actorsData = location.state.actors;
       console.log("Actors data received:", actorsData);
       setActors(actorsData);
+      setIsLoading(false);
     }
   }, [location]);
 
@@ -27,7 +30,9 @@ const AllActors = () => {
       )
     : [];
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <main className="container_all_cast">
       <button className="reset" onClick={() => navigate("/movies")}>
         Back to homepage

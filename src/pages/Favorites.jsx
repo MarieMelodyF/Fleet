@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import notfound from "../images/image-not-found.jpg";
+import Loader from "../components/Loader";
 
 const Favorites = ({ accountId, loggedInUserId }) => {
   const [favorites, setFavorites] = useState([]);
   const [idMovie, setIdMovie] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   console.log("idmovie", idMovie);
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
           //   console.log("favorites :", response.data.results);
           setFavorites(response.data);
         } else {
+          setIsLoading(true);
           console.error(
             "Erreur lors de la récupération des films favoris :",
             response.status
@@ -76,7 +79,9 @@ const Favorites = ({ accountId, loggedInUserId }) => {
     }
   };
 
-  return loggedInUserId ? (
+  return isLoading ? (
+    <Loader />
+  ) : loggedInUserId ? (
     <div className="container_fav">
       <div className="card-fav">
         {favorites.results && favorites.results.length > 0 ? (

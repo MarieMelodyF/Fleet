@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import AllActors from "./pages/AllActors";
+import ActorDetails from "./pages/ActorsDetails";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -100,7 +101,7 @@ function App() {
               }
             />
             <Route path="/movies/:id/all-teams" element={<AllActors />} />
-
+            <Route path="/actors/:id" element={<ActorDetails />} />
             {/* FOR WATCH LIST BODY : {
   "media_type": "movie",
   "media_id": 575264,

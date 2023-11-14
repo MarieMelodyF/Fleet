@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
+import Loader from "./Loader";
 
 const DetailsMovies = ({
   movieSelected,
@@ -15,8 +16,8 @@ const DetailsMovies = ({
   const [trailer, setTrailer] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [actors, setActors] = useState([]);
-  // console.log(actors);
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(actors);
 
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
   const token =
@@ -61,6 +62,7 @@ const DetailsMovies = ({
         setRecommendMovies(recommend);
         setSimilareMovies(similar);
         setReviews(reviews);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -102,7 +104,9 @@ const DetailsMovies = ({
     }
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <main>
       <div className="movie_details container-right">
         <div className="left">
@@ -186,16 +190,25 @@ const DetailsMovies = ({
                   return (
                     <div className="actors" key={index}>
                       {actor.profile_path === null ? (
-                        <img
-                          src={notfound}
-                          alt="avatar"
-                          style={{ width: "150px" }}
-                        />
+                        <>
+                          <Link to={`/actors/${actor.id}`}>
+                            <img
+                              src={notfound}
+                              alt="avatar"
+                              style={{ width: "150px" }}
+                            />
+                          </Link>
+                          <p className="actor">{actor.name}</p>
+                        </>
                       ) : (
-                        <img
-                          src={`https://image.tmdb.org/t/p/original${actor.profile_path}`}
-                          alt="avatar"
-                        />
+                        <>
+                          <Link to={`/actors/${actor.id}`}>
+                            <img
+                              src={`https://image.tmdb.org/t/p/original${actor.profile_path}`}
+                              alt="avatar"
+                            />
+                          </Link>
+                        </>
                       )}
                       <p className="actor">{actor.name}</p>
                     </div>

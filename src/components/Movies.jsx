@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import notfound from "../images/image-not-found.jpg";
 import DetailsMovies from "./DetailsMovie";
 import CardTopMovies from "./CardTopMovies";
+import Loader from "./Loader.jsx";
 
 const Movies = ({ accountId, loggedInUserId }) => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
               },
             }
           );
+          setIsLoading(false);
           setData(response.data);
           // console.log("response 1", response);
         } else {
@@ -82,7 +84,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
 
   return isLoading ? (
     <>
-      <p>"en chargement"</p>
+      <Loader />
     </>
   ) : (
     <main className="container ">
