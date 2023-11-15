@@ -94,7 +94,8 @@ const DetailsMovies = ({
         toast.success("Added to your favorites ✅");
         // console.log("response ADD FAV", response.data.status_message);
       } else {
-        console.error("An error occurred while adding the movie to favorites");
+        // console.error("An error occurred while adding the movie to favorites");
+        toast.error("You need to be connected for add to fav");
       }
     } catch (error) {
       console.log(error.response);
@@ -123,7 +124,8 @@ const DetailsMovies = ({
         toast.success("Added to your watchlist ✅");
         // console.log("response ADD Watchlist", response.data.status_message);
       } else {
-        console.error("An error occurred while adding the movie to watchlist ");
+        // console.error("An error occurred while adding the movie to watchlist ");
+        toast.error("You need to be connected for add to watchlist");
       }
     } catch (error) {
       console.log(error.response);

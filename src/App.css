@@ -9,6 +9,8 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
+  font-size: 18px;
 }
 h1 {
   font-size: 25px;
@@ -135,7 +137,7 @@ h4 {
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
-  height: 30px;
+  height: 35px;
 }
 .rated {
   padding-top: 2rem;
@@ -193,7 +195,6 @@ h4 {
   /* border: 1px solid blue; */
 }
 .details {
-  border: 1px solid red;
   height: 100%;
 }
 
@@ -319,7 +320,6 @@ h4 {
   align-items: center;
 }
 .carroussel img {
-  /* border: 1px solid red; */
   height: 230px;
   width: auto;
   border-radius: 10px;
@@ -391,13 +391,24 @@ h4 {
 .container_fav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 0 auto;
   width: 60%;
+  border: 1px solid red;
+}
+.container_fav_none {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 60%;
+  height: 70vh;
+  border: 1px solid red;
 }
 .fav img {
   height: 250px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .fav {
@@ -406,6 +417,7 @@ h4 {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border: 1px solid rgb(204, 255, 0);
 }
 .card-fav {
   display: flex;
@@ -417,6 +429,7 @@ h4 {
   padding: 2rem;
   border-radius: 10px;
   background-color: rgba(102, 185, 185, 0.215);
+  border: 1px solid rgb(0, 255, 26);
 }
 
 .delete-button {
@@ -506,7 +519,7 @@ h4 {
   width: 100%;
 }
 .details_left img {
-  height: 400px;
+  height: 330px;
   border-radius: 10px;
 }
 
@@ -514,7 +527,6 @@ h4 {
   padding: 2rem;
   width: auto;
   height: 100%;
-  border: 1px solid red;
 }
 .details_rigth {
   display: flex;
@@ -537,6 +549,7 @@ h4 {
 }
 .all_movie_of_actor img {
   height: 200px;
+  cursor: pointer;
 }
 
 /* -------------------- */

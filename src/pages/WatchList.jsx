@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useMovieContext } from "../components/Context";
+import { useNavigate } from "react-router-dom";
 import notfound from "../images/image-not-found.jpg";
 import Loader from "../components/Loader";
 
 const Watchlist = ({ accountId, loggedInUserId }) => {
+  const navigate = useNavigate();
+  const { updateMovieSelected } = useMovieContext();
+
   const [watchList, setWatchList] = useState([]);
   const [idMovie, setIdMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -102,11 +107,22 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
                     </button>
 
                     {fav.poster_path === null ? (
-                      <img src={notfound} alt={`image ${fav.original_title}`} />
+                      <img
+                        src={notfound}
+                        alt={`image ${fav.original_title}`}
+                        onClick={() => {
+                          navigate(`/movies/${fav.id}`);
+                          updateMovieSelected(fav);
+                        }}
+                      />
                     ) : (
                       <img
                         src={`https://image.tmdb.org/t/p/original${fav.poster_path}`}
                         alt={`image ${fav.original_title}`}
+                        onClick={() => {
+                          navigate(`/movies/${fav.id}`);
+                          updateMovieSelected(fav);
+                        }}
                       />
                     )}
                   </div>
@@ -125,8 +141,10 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
       </div>
     </div>
   ) : (
-    <div>
-      <h1>To add a movie you need to be connected. Go to Sign up 🙂</h1>
+    <div className="container_fav_none">
+      <div className="card_fav">
+        <h1>To add a movie you need to be connected. Go to Sign up 🙂</h1>
+      </div>
     </div>
   );
 };
