@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const GetToken = ({ loggedInUserId, handleLogOut }) => {
-  // console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
-
   const [userToken, setUserToken] = useState();
 
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
