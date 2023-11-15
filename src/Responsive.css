@@ -1,7 +1,5 @@
 @media (max-width: 1520px) {
   .side_rigth {
-    border: 1px solid rgb(237, 198, 42);
-    /* flex: 1; */
     width: 1000px;
     display: flex;
     flex-direction: column;
@@ -11,10 +9,6 @@
     font-size: 20px;
   }
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgb(23, 18, 18);
     gap: 1rem;
     margin: 1rem;
   }
@@ -26,18 +20,15 @@
     padding: 1rem 0;
     width: 500px;
     background-color: rgba(102, 185, 185, 0.215);
-    border: 1px solid black;
   }
   .underline {
     border-bottom: 2px solid darkslategray;
-    /* width: 900px; */
     margin: 2rem 0;
   }
   .info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid blue;
     width: 100%;
   }
   .movie_details_none {
@@ -45,7 +36,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
     width: 100%;
   }
 
@@ -53,10 +43,41 @@
     width: 810px;
   }
 }
+@media (max-width: 1120px) {
+  /* MOVIE DETAILS */
+  .right_1 {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex {
+    display: flex;
+    gap: 1rem;
+  }
+  .percent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+  }
+  /* ONE ACTOR */
 
+  div .detail_left {
+    height: 100%;
+  }
+  div .details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .container_actor {
+    display: flex;
+    align-items: center;
+  }
+}
 @media (max-width: 1200px) {
   .side_rigth {
-    border: 1px solid rgb(237, 198, 42);
     width: 700px;
   }
 
@@ -67,11 +88,44 @@
   div .carroussel {
     width: 600px;
   }
+
+  /* MOVIE DETAILS */
+  div .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem;
+  }
+  div .movie_details {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    width: 90%;
+  }
+  .side_rigth {
+    flex: 1;
+  }
+  .left {
+    width: 250px;
+  }
+  div .left img {
+    width: 250px;
+  }
+  div .right {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+  }
+  div .review {
+    width: 600px;
+  }
+  div .all_reviews {
+    width: 640px;
+  }
 }
 
 @media (max-width: 970px) {
   .side_rigth {
-    border: 1px solid rgb(237, 198, 42);
     width: 500px;
   }
 
@@ -82,6 +136,43 @@
   div .carroussel {
     width: 400px;
   }
+  /* MOVIE DETAILS */
+  .right_1 {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .flex {
+    display: flex;
+    gap: 1rem;
+  }
+  .percent {
+    width: 100px;
+  }
+  div .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  div .review {
+    width: 410px;
+  }
+  div .all_reviews {
+    width: 450px;
+  }
+}
+@media (max-width: 875px) {
+  .left {
+    width: 300px;
+  }
+  div .left img {
+    width: 200px;
+  }
+  div .right_2 {
+    width: 220px;
+  }
+  div .right {
+    width: 50%;
+  }
 }
 
 @media (max-width: 780px) {
@@ -89,8 +180,6 @@
     width: 450px;
   }
   div .side_left {
-    border: 1px solid rgb(237, 198, 42);
-
     width: 150px;
   }
   div .side_menu {
@@ -118,6 +207,40 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+  /* MOVIE DETAILS */
+
+  div .movie_details {
+    flex-direction: column;
+    align-items: center;
+    /* width: 80%; */
+    margin: 0;
+    padding: 0;
+  }
+
+  .side_rigth {
+    width: 70%;
+  }
+  .left {
+    width: 300px;
+    padding: 0;
+  }
+  .container_bottom {
+    width: 70%;
+  }
+  div .carroussel {
+    width: 300px;
+  }
+  div .review {
+    width: 330px;
+  }
+  div .all_reviews {
+    width: 360px;
+  }
+  /* ONE ACTOR */
+  div .team {
+    width: 60%;
+  }
 }
 @media (max-width: 600px) {
   .side_rigth {
@@ -128,7 +251,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(23, 18, 18);
     gap: 1rem;
     margin: 1rem;
   }
@@ -137,14 +259,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border: 1px solid rgb(234, 42, 237);
   }
   div .side_menu {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 450px;
     height: auto;
-    border: 1px solid rgb(42, 237, 214);
     overflow: scroll hidden;
   }
   .list_row {
@@ -153,7 +273,6 @@
     gap: 5px;
     height: 200px;
     width: 500px;
-    border: 1px solid rgb(237, 175, 42);
   }
   div .side_menu h4 {
     width: 150px;

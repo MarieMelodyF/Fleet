@@ -140,8 +140,8 @@ const DetailsMovies = ({
   return isLoading ? (
     <Loader />
   ) : (
-    <main>
-      <div className="movie_details container-right">
+    <>
+      <div className="movie_details side_right">
         <div className="left">
           <h1>{movieSelected.title}</h1>
           {movieSelected.poster_path === null ? (
@@ -162,14 +162,14 @@ const DetailsMovies = ({
           </button>
 
           <div className="right_1">
-            <div>
+            <div className="flex">
               <p> Recommandation :</p>
               <p className="percent">
                 {movieSelected.vote_average.toFixed(1) * 10} %
               </p>
             </div>
 
-            <div>
+            <div className="flex">
               <p>Genres :</p>
               {movieSelected.genres || movieSelected.genre_id ? (
                 <>
@@ -181,7 +181,7 @@ const DetailsMovies = ({
                 <p>N/C</p>
               )}
             </div>
-            <div>
+            <div className="flex">
               <p>Durée :</p>
               {movieSelected.runtime === undefined ? (
                 <p>N/C </p>
@@ -417,7 +417,7 @@ const DetailsMovies = ({
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

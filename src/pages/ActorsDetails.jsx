@@ -56,7 +56,7 @@ const Actors = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <main className="container_actor">
+    <main className="  container_actor">
       <div className="details">
         <div className="details_left">
           {details.profile_path === null ? (
@@ -77,7 +77,7 @@ const Actors = () => {
             Back to homepage
           </button>
           <h1 style={{ fontSize: "30px" }}>{details.name}</h1>
-          <div>
+          <div className="detail_left">
             {details.birthday === null ? (
               <p>Né(e) le : N/C</p>
             ) : (
@@ -97,72 +97,74 @@ const Actors = () => {
             {details.deathday === null ? null : (
               <p>Décédé(e) le : {details.deathday}</p>
             )}
+            <br />
+            {details.biography === "" ? (
+              <p>Bio : N/C</p>
+            ) : (
+              <p>Bio : {details.biography}</p>
+            )}
           </div>
-          <br />
-          {details.biography === "" ? (
-            <p>Bio : N/C</p>
-          ) : (
-            <p>Bio : {details.biography}</p>
-          )}
         </div>
         {/* ALL MOVIE OF ACTOR */}
       </div>
-      <div className="all_movie_of_actor">
-        <h3>All movie of {details.name} </h3>
-        {allMovieActor.cast && allMovieActor.cast.length > 0 ? (
-          <div className="carroussel">
-            {allMovieActor.cast.map((movieSelected, index) => (
-              <div key={index}>
-                {movieSelected.poster_path === null ? null : (
-                  <>
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${movieSelected.poster_path}`}
-                      alt=""
-                      onClick={() => {
-                        navigate(`/movies/${movieSelected.id}`);
-                        updateMovieSelected(movieSelected);
-                      }}
-                    />
-                    {movieSelected.title.length > 15 ? (
-                      <h4> {`${movieSelected.title.substring(0, 14)}...`}</h4>
-                    ) : (
-                      <h4>{movieSelected.title}</h4>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        ) : (
-          "Aucun film similaire trouvé"
-        )}
-      </div>
-      {/* ALL TV SHOW OF ACTOR */}
-      <div className="all_movie_of_actor">
-        <h3>All Tv Show of {details.name} </h3>
-        {tvShow.cast && tvShow.cast.length > 0 ? (
-          <div className="carroussel">
-            {tvShow.cast.map((list, index) => (
-              <div key={index}>
-                {list.poster_path === null ? null : (
-                  <>
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
-                      alt=""
-                    />
-                    {list.name.length > 15 ? (
-                      <h4> {`${list.name.substring(0, 14)}...`}</h4>
-                    ) : (
-                      <h4>{list.name}</h4>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        ) : (
-          "Aucun Tv Show trouvé"
-        )}
+      <div className="container_bottom">
+        <div className=" all_movie_of_actor">
+          <h3>All movie of {details.name} </h3>
+          {allMovieActor.cast && allMovieActor.cast.length > 0 ? (
+            <div className="carroussel">
+              {allMovieActor.cast.map((movieSelected, index) => (
+                <div key={index}>
+                  {movieSelected.poster_path === null ? null : (
+                    <>
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${movieSelected.poster_path}`}
+                        alt=""
+                        onClick={() => {
+                          navigate(`/movies/${movieSelected.id}`);
+                          updateMovieSelected(movieSelected);
+                        }}
+                      />
+                      {movieSelected.title.length > 15 ? (
+                        <h4> {`${movieSelected.title.substring(0, 14)}...`}</h4>
+                      ) : (
+                        <h4>{movieSelected.title}</h4>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            "Aucun film similaire trouvé"
+          )}
+        </div>
+        {/* ALL TV SHOW OF ACTOR */}
+        <div className="all_movie_of_actor">
+          <h3>All Tv Show of {details.name} </h3>
+          {tvShow.cast && tvShow.cast.length > 0 ? (
+            <div className="carroussel">
+              {tvShow.cast.map((list, index) => (
+                <div key={index}>
+                  {list.poster_path === null ? null : (
+                    <>
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${list.poster_path}`}
+                        alt=""
+                      />
+                      {list.name.length > 15 ? (
+                        <h4> {`${list.name.substring(0, 14)}...`}</h4>
+                      ) : (
+                        <h4>{list.name}</h4>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            "Aucun Tv Show trouvé"
+          )}
+        </div>
       </div>
     </main>
   );

@@ -67,9 +67,13 @@ h4 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* background-color: rgb(69, 122, 124); */
   background-color: rgb(88, 147, 147);
+  height: auto;
   border-bottom: 1px solid lightgray;
+}
+.menu {
+  display: flex;
+  gap: 2rem;
 }
 .sign {
   display: flex;
@@ -78,6 +82,7 @@ h4 {
   align-items: center;
   width: 200px;
   height: 70px;
+  border: 1px solid red;
 }
 
 /* ------------ */
@@ -107,7 +112,7 @@ h4 {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 1rem;
   font-size: 20px;
 }
 .list img {
@@ -183,7 +188,11 @@ h4 {
 /* -------------------- */
 .movie_details {
   padding: 2rem;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+}
+.details {
+  border: 1px solid red;
+  height: 100%;
 }
 
 .movie_details_none p {
@@ -202,7 +211,7 @@ h4 {
 .container {
   display: flex;
   justify-content: space-around;
-  border: 1px solid rgb(23, 18, 18);
+  /* border: 1px solid rgb(23, 18, 18); */
   gap: 1rem;
   margin: 1rem;
 }
@@ -218,10 +227,8 @@ h4 {
   align-items: center;
   justify-content: center;
   /* border: 1px solid rgb(23, 18, 18); */
-  /* background-color: aliceblue; */
 }
 .movie_details img {
-  /* height: 450px; */
   width: 400px;
   object-fit: cover;
   border-radius: 10px;
@@ -384,13 +391,11 @@ h4 {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  /* border: 1px solid rgb(23, 18, 18); */
-  width: 1000px;
+  width: 60%;
 }
 .fav img {
   height: 250px;
   border-radius: 10px;
-  /* position: relative; */
 }
 
 .fav {
@@ -406,12 +411,12 @@ h4 {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: calc(100vh - 25vh);
   margin: 2rem;
-  padding: 0 2rem;
+  padding: 2rem;
   border-radius: 10px;
   background-color: rgba(102, 185, 185, 0.215);
 }
+
 .delete-button {
   margin: 10px;
   height: 25px;
@@ -440,20 +445,22 @@ h4 {
   align-items: center;
   margin: 0 auto;
   width: 1200px;
-  border: 1px solid red;
+  width: 90%;
 }
 
 .team {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid yellow;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   margin-top: 2rem;
+  padding: 5rem;
 }
 .team_left {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 .team_left img {
   height: 175px;
@@ -465,6 +472,7 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 .team_right img {
   height: 175px;
@@ -493,21 +501,23 @@ h4 {
   align-items: center;
   line-height: 25px;
   border-bottom: 2px solid darkslategray;
+  width: 100%;
 }
 .details_left img {
   height: 400px;
   border-radius: 10px;
 }
 
-.details_left {
+.detail_left {
   padding: 2rem;
+  width: auto;
+  height: 100%;
+  border: 1px solid red;
 }
-
 .details_rigth {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 300px;
   margin: 4rem;
 }
 .container_actor {
