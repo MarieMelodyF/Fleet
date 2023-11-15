@@ -7,7 +7,6 @@ const Favorites = ({ accountId, loggedInUserId }) => {
   const [favorites, setFavorites] = useState([]);
   const [idMovie, setIdMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("idmovie", idMovie);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +24,6 @@ const Favorites = ({ accountId, loggedInUserId }) => {
         );
 
         if (response.status === 200) {
-          //   console.log("favorites :", response.data.results);
           setFavorites(response.data);
           setIsLoading(false);
         } else {
@@ -69,7 +67,6 @@ const Favorites = ({ accountId, loggedInUserId }) => {
             return prevFavorites;
           }
         });
-        console.log("Film supprimé des favoris avec succès");
       }
     } catch (error) {
       console.error(

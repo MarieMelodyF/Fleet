@@ -36,7 +36,6 @@ const Movies = ({ accountId, loggedInUserId }) => {
           );
           setIsLoading(false);
           setData(response.data);
-          // console.log("response 1", response);
         } else {
           const response = await axios.get(
             `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=fr-US&page=1&sort_by=popularity.desc&api_key=${API_KEY}`,
@@ -46,7 +45,6 @@ const Movies = ({ accountId, loggedInUserId }) => {
               },
             }
           );
-          // console.log("response 2", response);
           setData(response.data);
           setIsLoading(false);
         }

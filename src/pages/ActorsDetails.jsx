@@ -38,7 +38,6 @@ const Actors = () => {
         const details = responseOne.data;
         const allMovieActor = responseTwo.data;
         const tvShow = responseThree.data;
-        // console.log("allTVSHOW", tvShow);
 
         // enregistrement data dans state
         setIsLoading(false);

@@ -4,14 +4,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const Signup = ({ onSignup }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState();
-  console.log("userID IN SIGNUP", userId);
-  const navigate = useNavigate();
 
-  console.log("userid IN SIGNUP", userId);
   const location = useLocation();
   const REQUEST_TOKEN =
     location.state?.request_token ||
@@ -26,7 +24,6 @@ const Signup = ({ onSignup }) => {
     try {
       if (username === "" || email === "" || password === "") {
         toast.error(" Please field all files");
-        console.log("please field all files");
       } else {
         const response = await axios.post(
           `https://api.themoviedb.org/3/authentication/session/new?api_key=${API_KEY}&request_token=${REQUEST_TOKEN}`,
@@ -46,8 +43,6 @@ const Signup = ({ onSignup }) => {
         setUserId(newUserId);
         onSignup(newUserId);
         toast.success("Your account is created ✨");
-        console.log("requete");
-
         if (newUserId !== undefined) {
           navigate("/movies");
         }

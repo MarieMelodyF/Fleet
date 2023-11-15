@@ -7,7 +7,6 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
   const [watchList, setWatchList] = useState([]);
   const [idMovie, setIdMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("idmovie", idMovie);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +24,6 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
         );
 
         if (response.status === 200) {
-          //   console.log("watchList :", response.data.results);
           setWatchList(response.data);
           setIsLoading(false);
         } else {
@@ -68,7 +66,6 @@ const Watchlist = ({ accountId, loggedInUserId }) => {
             return prevWatchList;
           }
         });
-        console.log("Film supprimé de la liste avec succès");
       }
     } catch (error) {
       console.error(

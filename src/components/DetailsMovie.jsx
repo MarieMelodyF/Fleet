@@ -18,7 +18,6 @@ const DetailsMovies = ({
   const [reviews, setReviews] = useState([]);
   const [actors, setActors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("=>", movieSelected);
 
   // Times of movie
   const runtimeMinutes = movieSelected.runtime;
@@ -58,10 +57,7 @@ const DetailsMovies = ({
         const reviews = responseThree.data;
         const actors = responseFour.data;
         const recommend = responseFive.data;
-        // console.log("recommander", recommend);
-        // console.log("similar", similar);
-        // console.log("reviews", reviews);
-        // console.log("video", videos);
+
         // enregistrement data dans state
         setActors(actors);
         setTrailer(videos);
@@ -96,8 +92,7 @@ const DetailsMovies = ({
           }
         );
         toast.success("Added to your favorites ✅");
-
-        console.log("response ADD FAV", response.data.status_message);
+        // console.log("response ADD FAV", response.data.status_message);
       } else {
         console.error("An error occurred while adding the movie to favorites");
       }
@@ -126,8 +121,7 @@ const DetailsMovies = ({
           }
         );
         toast.success("Added to your watchlist ✅");
-
-        console.log("response ADD Watchlist", response.data.status_message);
+        // console.log("response ADD Watchlist", response.data.status_message);
       } else {
         console.error("An error occurred while adding the movie to watchlist ");
       }

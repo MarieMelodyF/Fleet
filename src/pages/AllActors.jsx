@@ -12,7 +12,6 @@ const AllActors = () => {
   useEffect(() => {
     if (location.state.actors) {
       const actorsData = location.state.actors;
-      console.log("Actors data received:", actorsData);
       setActors(actorsData);
       setIsLoading(false);
     }
@@ -42,7 +41,6 @@ const AllActors = () => {
           <h2>All Actors</h2>
           {actors ? (
             actors.cast.map(({ name, profile_path }, index) => {
-              //   console.log(name);
               return (
                 <div className="all_actors" key={index}>
                   <h4 style={{ marginBottom: "5px" }} key={index}>
