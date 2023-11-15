@@ -5,7 +5,6 @@ import axios from "axios";
 import "./App.css";
 import Header from "./components/Header";
 import Movies from "./components/Movies";
-import GetToken from "./pages/Signup";
 import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";

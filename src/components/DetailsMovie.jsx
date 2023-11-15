@@ -4,6 +4,7 @@ import axios from "axios";
 import notfound from "../images/image-not-found.jpg";
 import avatar from "../images/avatar.jpg";
 import Loader from "./Loader";
+import toast, { Toaster } from "react-hot-toast";
 
 const DetailsMovies = ({
   movieSelected,
@@ -94,6 +95,7 @@ const DetailsMovies = ({
             },
           }
         );
+        toast.success("Added to your favorites ✅");
 
         console.log("response ADD FAV", response.data.status_message);
       } else {
@@ -123,6 +125,7 @@ const DetailsMovies = ({
             },
           }
         );
+        toast.success("Added to your watchlist ✅");
 
         console.log("response ADD Watchlist", response.data.status_message);
       } else {
@@ -141,6 +144,16 @@ const DetailsMovies = ({
     <Loader />
   ) : (
     <>
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: "10px",
+            border: "2px solid #050505",
+            padding: "16px",
+            backgroundColor: "##d1d1d1",
+          },
+        }}
+      />
       <div className="movie_details side_right">
         <div className="left">
           <h1>{movieSelected.title}</h1>

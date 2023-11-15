@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const GetToken = ({ loggedInUserId, handleLogOut }) => {
   // console.log("loggedInUserId IN GETTOKEN", loggedInUserId);
@@ -33,10 +34,21 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
   // Fonction logout pour appel de la fonction handlelogout dans app
   const handleLogOutClick = () => {
     handleLogOut();
+    toast.error("You are disconnected !");
   };
 
   return (
     <div>
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: "10px",
+            border: "2px solid #050505",
+            padding: "16px",
+            backgroundColor: "##d1d1d1",
+          },
+        }}
+      />
       {/* Ask the user for permission for request token*/}
       {loggedInUserId ? (
         <div className="sign">
