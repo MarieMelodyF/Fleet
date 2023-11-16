@@ -72,7 +72,7 @@ const Signup = ({ onSignup }) => {
         <div className="from_title">
           <p>Please fill in all fields </p>
           <br />
-          <p>After your connexion you can add film to favorites & watchlist</p>
+          <p>After your connection you can add film to favorites & watchlist</p>
         </div>
         <form onSubmit={handleSignup}>
           <input

@@ -100,7 +100,7 @@ const Movies = ({ accountId, loggedInUserId }) => {
         <div className="side_menu">
           {search ? null : (
             <h2 style={{ paddingTop: "2rem", fontWeight: "bold" }}>
-              Actualy aviable :
+              Actually aviable :
             </h2>
           )}
           <div>
