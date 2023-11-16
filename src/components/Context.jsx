@@ -7,7 +7,6 @@ export const MovieProvider = ({ children }) => {
 
   const updateMovieSelected = (movieId) => {
     setMovieSelected(movieId);
-    console.log("ID FILM A JOUR", movieId);
   };
 
   return (

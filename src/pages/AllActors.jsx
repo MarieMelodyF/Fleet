@@ -38,6 +38,7 @@ const AllActors = () => {
       </button>
       <div className="team">
         <div className="team_left">
+          {/* ACTORS */}
           <h2>All Actors</h2>
           {actors ? (
             actors.cast.map(({ name, profile_path }, index) => {
@@ -68,6 +69,8 @@ const AllActors = () => {
             </div>
           )}
         </div>
+
+        {/* CREW */}
         <div className="team_right">
           <h2>All Crew</h2>
           {uniqueTeamCrew && uniqueTeamCrew.length > 0 ? (

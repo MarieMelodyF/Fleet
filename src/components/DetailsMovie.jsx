@@ -92,7 +92,6 @@ const DetailsMovies = ({
           }
         );
         toast.success("Added to your favorites ✅");
-        // console.log("response ADD FAV", response.data.status_message);
       } else {
         // console.error("An error occurred while adding the movie to favorites");
         toast.error("You need to be connected for add to fav");
@@ -306,6 +305,7 @@ const DetailsMovies = ({
                     title="movie-trailer"
                     width="530"
                     height="285"
+                    allowFullScreen
                     src={`https://www.youtube.com/embed/${trailer.key}`}
                   ></iframe>
                 </div>

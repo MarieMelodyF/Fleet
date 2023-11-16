@@ -9,7 +9,6 @@ const Favorites = ({ accountId, loggedInUserId }) => {
   const navigate = useNavigate();
   const { updateMovieSelected } = useMovieContext();
   const [favorites, setFavorites] = useState([]);
-  const [idMovie, setIdMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,23 +17,27 @@ const Favorites = ({ accountId, loggedInUserId }) => {
       const token =
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmMzYmE3NmM3OGU2ODJhNjUxZjIzMmZmNTljNDVjNSIsInN1YiI6IjY1NGNlM2RkZmQ0ZjgwMDBhZTJkMzk3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yfONWJVpL39pOedGYZ5Pr5ZqJhp_EBxgOe8nidjGY2Q";
       try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/account/${accountId}/favorite/movies?language=fr&page=1&session_id=${loggedInUserId}&sort_by=created_at.asc&api_key=${API_KEY}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (response.status === 200) {
-          setFavorites(response.data);
-          setIsLoading(false);
-        } else {
-          console.error(
-            "Erreur lors de la récupération des films favoris :",
-            response.status
+        if (loggedInUserId !== undefined) {
+          const response = await axios.get(
+            `https://api.themoviedb.org/3/account/${accountId}/favorite/movies?language=fr&page=1&session_id=${loggedInUserId}&sort_by=created_at.asc&api_key=${API_KEY}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
           );
+
+          if (response.status === 200) {
+            setFavorites(response.data);
+            setIsLoading(false);
+          } else {
+            console.error(
+              "Erreur lors de la récupération des films favoris :",
+              response.status
+            );
+          }
+        } else {
+          setIsLoading(false);
         }
       } catch (error) {
         console.error(
@@ -82,7 +85,7 @@ const Favorites = ({ accountId, loggedInUserId }) => {
 
   return isLoading ? (
     <Loader />
-  ) : loggedInUserId ? (
+  ) : loggedInUserId !== undefined ? (
     <div className="container_fav">
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
         Your Favorites Movies

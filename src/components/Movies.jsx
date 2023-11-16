@@ -64,7 +64,6 @@ const Movies = ({ accountId, loggedInUserId }) => {
           `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=fr-FR`
         );
         scrollToTop();
-        // setMovieSelected(response.data);
         updateMovieSelected(response.data);
         setMovieId(response.data.id);
         navigate(`/movies/${response.data.id}`);
@@ -78,9 +77,9 @@ const Movies = ({ accountId, loggedInUserId }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // mets à zéro state sarch et updatepovieselected
   const handleReset = () => {
     setSearch("");
-    // setMovieSelected(null);
     updateMovieSelected(null);
     navigate("/movies");
   };

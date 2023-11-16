@@ -29,7 +29,7 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
     fetchData();
   }, []);
 
-  // Fonction logout pour appel de la fonction handlelogout dans app
+  // Fonction logout pour appel de la fonction handlelogout
   const handleLogOutClick = () => {
     handleLogOut();
     toast.error("You are disconnected !");
@@ -47,6 +47,7 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
           },
         }}
       />
+
       {/* Ask the user for permission for request token*/}
       {loggedInUserId ? (
         <div className="sign">

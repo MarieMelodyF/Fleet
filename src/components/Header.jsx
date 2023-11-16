@@ -6,15 +6,15 @@ import { useMovieContext } from "../components/Context.jsx";
 const Header = ({ loggedInUserId, handleLogOut }) => {
   const { updateMovieSelected } = useMovieContext();
 
-  // mettre à null le state selectedmovie
-  const reset = () => {
+  // mettre à null le state selectedmovie au clic
+  const handleReset = () => {
     updateMovieSelected(null);
   };
 
   return (
     <div className="head">
       <div>
-        <Link to="/movies" onClick={reset}>
+        <Link to="/movies" onClick={handleReset}>
           <img src={logo} alt="" />
         </Link>
       </div>

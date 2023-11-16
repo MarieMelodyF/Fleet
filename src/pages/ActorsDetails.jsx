@@ -104,6 +104,7 @@ const Actors = () => {
             )}
           </div>
         </div>
+
         {/* ALL MOVIE OF ACTOR */}
       </div>
       <div className="container_bottom">
@@ -137,6 +138,7 @@ const Actors = () => {
             "Aucun film similaire trouvé"
           )}
         </div>
+
         {/* ALL TV SHOW OF ACTOR */}
         <div className="all_movie_of_actor">
           <h3>All Tv Show of {details.name} </h3>
