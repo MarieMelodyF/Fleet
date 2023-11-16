@@ -351,7 +351,7 @@ const DetailsMovies = ({
         {/* ----SIMILAR---- */}
         <div className="similar">
           <h3>Similar movies based on genres and keywords</h3>
-          {similareMovies.results ? (
+          {similareMovies.results && similareMovies.results.length > 0 ? (
             <div className="carroussel">
               {similareMovies.results.map((list, index) => (
                 <div key={index}>

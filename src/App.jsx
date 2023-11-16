@@ -18,8 +18,6 @@ function App() {
   );
   const [search, setSearch] = useState("");
   const [accountId, setAccountId] = useState();
-  console.log("accoundId in APP", accountId);
-  console.log("loggedInUserId IN APP =>", loggedInUserId);
 
   // recupere le session id dans signup
   const handleSignup = (userId) => {
@@ -38,7 +36,7 @@ function App() {
   // func LOGOUT
   const handleLogOut = () => {
     Cookies.remove("userId");
-    setLoggedInUserId("");
+    setLoggedInUserId(undefined);
   };
 
   // Recupèrer l'account ID via requete

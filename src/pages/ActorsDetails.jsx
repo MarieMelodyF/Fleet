@@ -140,7 +140,7 @@ const Actors = () => {
         </div>
 
         {/* ALL TV SHOW OF ACTOR */}
-        <div className="all_movie_of_actor">
+        <div className="all_tv_of_actor">
           <h3>All Tv Show of {details.name} </h3>
           {tvShow.cast && tvShow.cast.length > 0 ? (
             <div className="carroussel">

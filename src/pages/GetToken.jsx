@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const GetToken = ({ loggedInUserId, handleLogOut }) => {
+  const navigate = useNavigate();
+  console.log(loggedInUserId);
   const [userToken, setUserToken] = useState();
 
   const API_KEY = "92c3ba76c78e682a651f232ff59c45c5";
@@ -32,6 +34,7 @@ const GetToken = ({ loggedInUserId, handleLogOut }) => {
   // Fonction logout pour appel de la fonction handlelogout
   const handleLogOutClick = () => {
     handleLogOut();
+    navigate("/movies");
     toast.error("You are disconnected !");
   };
 
