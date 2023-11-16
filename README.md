@@ -1,6 +1,6 @@
 This app is a site that lists all existing films.
-See top rated movies, and upcoming movies.
-You can get information about these movies,
+See top rated & upcoming movies.
+You can get informations about these movies,
 See all movies and tv show of one actor, by clicking on them,
 See all cast and crew members ("see more persons"),
 Search a movie by title,
