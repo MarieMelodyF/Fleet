@@ -289,7 +289,7 @@ const DetailsMovies = ({
               to={`/movies/${movieSelected.id}/all-teams`}
               state={{ actors: actors }}
             >
-              <p>Voir tous les acteurs ➡️</p>
+              <p>See all members ➡️</p>
             </Link>
           </div>
         </div>
