@@ -11,6 +11,6 @@ Add to a watchlist (if account is created),
 To launch the project :
 
 1. Download or clone this repo
-2. yarn add
+2. yarn install
 3. yarn dev
 4. Enjoy !
